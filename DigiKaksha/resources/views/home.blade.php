@@ -13,8 +13,13 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                    @if ($user->user_level==3)
+                        You are logged in as Admin!
+                    @elseif ($user->user_level==2)
+                        You are logged in as teacher!
+                    @else
+                        You are logged in as Student!
+                    @endif
                 </div>
             </div>
         </div>
