@@ -11,4 +11,9 @@ class Course extends Model
     {
         return $this->belongsToMany('App\User');
     }
+
+    public function groups()
+    {
+        return $this->belongsToMany('App\Group');
+    }
 }

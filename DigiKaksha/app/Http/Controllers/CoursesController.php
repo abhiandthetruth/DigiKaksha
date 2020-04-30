@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User;
+use App\Group;
+use App\Course;
 use Illuminate\Http\Request;
 
 class CoursesController extends Controller
@@ -36,7 +38,17 @@ class CoursesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(auth()->user()->user_level < 3) return redirect('home');
+        $instructors = $this->getInstructors($request->input('instructors'));
+        $groups = $this->getGroups($request->input('classes'));
+        $course = new Course();
+        $course->name = $request->input('course-name');
+        $course->course_code = $request->input('course-code');
+        $course->semester = $request->input('semester');
+        $course->save();
+        $course->users()->attach($instructors);
+        $course->groups()->attach($groups);
+        return redirect('/courses/create')->with('status', 'Course created!');
     }
 
     /**
@@ -82,5 +94,21 @@ class CoursesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getInstructors($str)
+    {
+        $instructorRolls = explode(",", $str);
+        $list = array();
+        foreach($instructorRolls as $instructorRoll) array_push($list, (User::where('roll_no',$instructorRoll)->first())->id);
+        return $list;
+    }
+
+    public function getGroups($str)
+    {
+        $groupCodes = explode(",", $str);
+        $list = array();
+        foreach($groupCodes as $groupCode) array_push($list, (Group::where('group_code',$groupCode)->first())->id);
+        return $list;
     }
 }

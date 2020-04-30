@@ -45,7 +45,7 @@ class AdminsController extends Controller
         $user->email = $request->input('email');
         $user->name = $request->input('name');
         $user->save();
-        return redirect('home')->with('status', 'Admin created!');
+        return redirect('admins/create')->with('status', 'Admin created!');
     }
 
     /**

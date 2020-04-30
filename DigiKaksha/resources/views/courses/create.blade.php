@@ -8,16 +8,35 @@
                 <div class="card-header">{{ __('Create Course') }}</div>
 
                 <div class="card-body">
+                    @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                    @endif
                     <form method="POST" action="/courses">
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="course-name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="course-name" type="text" class="form-control @error('course-name') is-invalid @enderror" name="course-name" value="{{ old('course-name') }}" required autocomplete="course-name" autofocus>
 
-                                @error('name')
+                                @error('course-name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label for="semester" class="col-md-4 col-form-label text-md-right">{{ __('Semester') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="semester" type="text" class="form-control @error('semester') is-invalid @enderror" name="semester" value="{{ old('semester') }}" required autocomplete="semester">
+
+                                @error('semester')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -26,12 +45,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="roll-no" class="col-md-4 col-form-label text-md-right">{{ __('Roll Number') }}</label>
+                            <label for="course-code" class="col-md-4 col-form-label text-md-right">{{ __('Course Code') }}</label>
 
                             <div class="col-md-6">
-                                <input id="roll-no" type="text" class="form-control @error('email') is-invalid @enderror" name="roll-no" value="{{ old('roll-no') }}" required autocomplete="roll-no">
+                                <input id="course-code" type="text" class="form-control @error('course-code') is-invalid @enderror" name="course-code" value="{{ old('course-code') }}" required autocomplete="course-code">
 
-                                @error('roll-no')
+                                @error('course-code')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -40,12 +59,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="instructors" class="col-md-4 col-form-label text-md-right">{{ __('Instructors') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="instructors" type="text" class="form-control @error('instructors') is-invalid @enderror" name="instructors" value="{{ old('instructors') }}" required autocomplete="instructors">
 
-                                @error('email')
+                                @error('instructors')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -54,24 +73,16 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="classes" class="col-md-4 col-form-label text-md-right">{{ __('Classes') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="classes" type="text" class="form-control @error('classes') is-invalid @enderror" name="classes" value="{{ old('classes') }}" required autocomplete="classes">
 
-                                @error('password')
+                                @error('classes')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
                         

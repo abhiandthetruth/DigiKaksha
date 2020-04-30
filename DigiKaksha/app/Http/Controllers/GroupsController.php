@@ -43,6 +43,7 @@ class GroupsController extends Controller
         $group->group_code = $request->input('class-code');
         $group->save();
         $group->users()->attach($students);
+        return redirect('/groups/create')->with('status', 'Group created!');
     }
 
     /**
