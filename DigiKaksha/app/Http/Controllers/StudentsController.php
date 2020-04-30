@@ -48,7 +48,7 @@ class StudentsController extends Controller
         $user->user_level = 1;
         $user->roll_no = $request->input('roll_no');
         $user->save();
-        return redirect('/students/create');
+        return redirect('/students/create')->with('status', 'Student created!');
     }
 
     /**

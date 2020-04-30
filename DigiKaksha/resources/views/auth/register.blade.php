@@ -8,6 +8,11 @@
             <div class="card-header">{{ __('Create ') }}{{ substr($url,1) }}</div>
 
                 <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
                     <form method="POST" action="{{ $url }}">
                         @csrf
 
