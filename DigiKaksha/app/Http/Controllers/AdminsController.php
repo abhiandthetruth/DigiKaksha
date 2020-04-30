@@ -37,6 +37,9 @@ class AdminsController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'email'=>'unique:users',
+        ]);
         $user = new User();
         $user->password = Hash::make($request->input('password'));
         $user->email = $request->input('email');

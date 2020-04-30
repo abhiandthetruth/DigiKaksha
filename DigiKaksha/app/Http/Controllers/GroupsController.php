@@ -23,7 +23,8 @@ class GroupsController extends Controller
      */
     public function create()
     {
-        //
+        if(auth()->user()->user_level < 3) return redirect('home');
+        return view('groups/create');
     }
 
     /**

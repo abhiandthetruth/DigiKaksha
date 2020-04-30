@@ -614,6 +614,8 @@
                 <a href="/students/create" class="btn btn-sm btn-neutral">New Student</a>
                 <a href="/teachers/create" class="btn btn-sm btn-neutral">New Teacher</a>
                 <a href="/admins/create" class="btn btn-sm btn-neutral">New Admin</a>
+                <a href="/groups/create" class="btn btn-sm btn-neutral">New Class</a>
+                <a href="/courses/create" class="btn btn-sm btn-neutral">New Course</a>
               @endif
               <a href="#" class="btn btn-sm btn-neutral">Filters</a>
             </div>

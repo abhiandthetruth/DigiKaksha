@@ -37,12 +37,16 @@ class TeachersController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'email'=>'unique:users',
+            'roll_no'=>'unique:users',
+        ]);
         $user = new User();
         $user->password = Hash::make($request->input('password'));
         $user->email = $request->input('email');
         $user->name = $request->input('name');
         $user->user_level = 2;
-        $user->roll_no = $request->input('roll-no',NULL);
+        $user->roll_no = $request->input('roll_no',NULL);
         $user->save();
         return redirect('home');
     }
