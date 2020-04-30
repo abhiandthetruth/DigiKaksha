@@ -31,12 +31,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="class-code" class="col-md-4 col-form-label text-md-right">{{ __('Class ID') }}</label>
+                            <label for="group_code" class="col-md-4 col-form-label text-md-right">{{ __('Class ID') }}</label>
 
                             <div class="col-md-6">
-                                <input id="class-code" type="text" class="form-control @error('class-code') is-invalid @enderror" name="class-code" value="{{ old('class-code') }}" required autocomplete="class-code">
+                                <input id="group_code" type="text" class="form-control @error('group_code') is-invalid @enderror" name="group_code" value="{{ old('group_code') }}" required autocomplete="group_code">
 
-                                @error('class-code')
+                                @error('group_code')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -48,7 +48,7 @@
                             <label for="students" class="col-md-4 col-form-label text-md-right">{{ __('Student IDs') }}</label>
 
                             <div class="col-md-6">
-                                <input id="students" type="text" class="form-control @error('students') is-invalid @enderror" name="students" value="{{ old('students') }}" required autocomplete="class-code">
+                                <input id="students" type="text" class="form-control @error('students') is-invalid @enderror" name="students" value="{{ old('students') }}" required autocomplete="group_code">
 
                                 @error('students')
                                     <span class="invalid-feedback" role="alert">

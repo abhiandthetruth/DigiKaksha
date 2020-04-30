@@ -39,11 +39,24 @@ class CoursesController extends Controller
     public function store(Request $request)
     {
         if(auth()->user()->user_level < 3) return redirect('home');
-        $instructors = $this->getInstructors($request->input('instructors'));
-        $groups = $this->getGroups($request->input('classes'));
+        $this->validate($request, [
+            'course_code'=>'unique:courses',
+        ]);
+        try{
+            $instructors = $this->getInstructors($request->input('instructors'));
+        }
+        catch(\Exception $e){
+            return redirect()->back()->withInput()->withErrors(['instructors'=>'Some of the instructors are non-existent']);
+        }
+        try{
+            $groups = $this->getGroups($request->input('classes'));
+        }
+        catch(\Exception $e){
+            return redirect()->back()->withInput()->withErrors(['classes'=>'Some of the groups are non-existent']);
+        }
         $course = new Course();
         $course->name = $request->input('course-name');
-        $course->course_code = $request->input('course-code');
+        $course->course_code = $request->input('course_code');
         $course->semester = $request->input('semester');
         $course->save();
         $course->users()->attach($instructors);

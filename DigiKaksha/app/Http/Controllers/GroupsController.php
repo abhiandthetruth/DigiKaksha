@@ -37,10 +37,18 @@ class GroupsController extends Controller
     public function store(Request $request)
     {
         if(auth()->user()->user_level < 3) return redirect('home');
-        $students = $this->getStudents($request->input('students'));
+        $this->validate($request, [
+            'group_code'=>'unique:groups',
+        ]);
+        try{
+            $students = $this->getStudents($request->input('students'));
+        }
+        catch(\Exception $e){
+            return redirect()->back()->withInput()->withErrors(['students'=>'Some of the listed students are non-existent']);
+        }
         $group = new Group();
         $group->name = $request->input('class-name');
-        $group->group_code = $request->input('class-code');
+        $group->group_code = $request->input('group_code');
         $group->save();
         $group->users()->attach($students);
         return redirect('/groups/create')->with('status', 'Group created!');

@@ -45,12 +45,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="course-code" class="col-md-4 col-form-label text-md-right">{{ __('Course Code') }}</label>
+                            <label for="course_code" class="col-md-4 col-form-label text-md-right">{{ __('Course Code') }}</label>
 
                             <div class="col-md-6">
-                                <input id="course-code" type="text" class="form-control @error('course-code') is-invalid @enderror" name="course-code" value="{{ old('course-code') }}" required autocomplete="course-code">
+                                <input id="course_code" type="text" class="form-control @error('course_code') is-invalid @enderror" name="course_code" value="{{ old('course_code') }}" required autocomplete="course_code">
 
-                                @error('course-code')
+                                @error('course_code')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
