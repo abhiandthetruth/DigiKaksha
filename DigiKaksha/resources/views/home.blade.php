@@ -784,28 +784,55 @@
             <div class="card-body">
               <!-- List group -->
               <ul class="list-group list-group-flush list my--3">
-                @foreach ($user->groups as $group)
-                    <li class="list-group-item px-0">
-                        <div class="row align-items-center">
-                        <div class="col-auto">
-                            <!-- Avatar -->
-                            <a href="#" class="avatar rounded-circle">
-                            <img alt="Image placeholder" src="../../assets/img/theme/team-1.jpg">
-                            </a>
-                        </div>
-                        <div class="col ml--2">
-                            <h4 class="mb-0">
-                            <a href="#!">{{$group->name}}</a>
-                            </h4>
-                            <span class="text-success">●</span>
-                            <small>Online</small>
-                        </div>
-                        <div class="col-auto">
-                            <button type="button" class="btn btn-sm btn-primary">Add</button>
-                        </div>
-                        </div>
-                    </li>
-                @endforeach
+                @if($user->user_level==1)
+                  @foreach ($user->groups as $group)
+                      <li class="list-group-item px-0">
+                          <div class="row align-items-center">
+                          <div class="col-auto">
+                              <!-- Avatar -->
+                              <a href="#" class="avatar rounded-circle">
+                              <img alt="Image placeholder" src="../../assets/img/theme/team-1.jpg">
+                              </a>
+                          </div>
+                          <div class="col ml--2">
+                              <h4 class="mb-0">
+                              <a href="#!">{{$group->name}}</a>
+                              </h4>
+                              <span class="text-success">●</span>
+                              <small>Online</small>
+                          </div>
+                          <div class="col-auto">
+                              <button type="button" class="btn btn-sm btn-primary">Add</button>
+                          </div>
+                          </div>
+                      </li>
+                  @endforeach
+                @else
+                  @foreach($user->courses as $course)
+                    @foreach ($course->groups as $group)
+                      <li class="list-group-item px-0">
+                          <div class="row align-items-center">
+                          <div class="col-auto">
+                              <!-- Avatar -->
+                              <a href="#" class="avatar rounded-circle">
+                              <img alt="Image placeholder" src="../../assets/img/theme/team-1.jpg">
+                              </a>
+                          </div>
+                          <div class="col ml--2">
+                              <h4 class="mb-0">
+                              <a href="#!">{{$course->course_code}}: {{$group->name}}</a>
+                              </h4>
+                              <span class="text-success">●</span>
+                              <small>Online</small>
+                          </div>
+                          <div class="col-auto">
+                              <button type="button" class="btn btn-sm btn-primary">Add</button>
+                          </div>
+                          </div>
+                      </li>
+                    @endforeach
+                  @endforeach
+                @endif
               </ul>
             </div>
           </div>
@@ -888,76 +915,47 @@
             <!-- Card header -->
             <div class="card-header">
               <!-- Title -->
-              <h5 class="h3 mb-0">Progress track</h5>
+              <h5 class="h3 mb-0">Courses</h5>
             </div>
             <!-- Card body -->
             <div class="card-body">
               <!-- List group -->
               <ul class="list-group list-group-flush list my--3">
-                <li class="list-group-item px-0">
-                  <div class="row align-items-center">
-                    <div class="col-auto">
-                      <!-- Avatar -->
-                      <a href="#" class="avatar rounded-circle">
-                        <img alt="Image placeholder" src="../../assets/img/theme/bootstrap.jpg">
-                      </a>
-                    </div>
-                    <div class="col">
-                      <h5>Argon Design System</h5>
-                      <div class="progress progress-xs mb-0">
-                        <div class="progress-bar bg-orange" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                @if($user->user_level==1)
+                  @foreach($user->groups as $group)
+                    @foreach ($group->courses as $course)
+                      <li class="list-group-item px-0">
+                        <div class="row align-items-center">
+                          <div class="col-auto">
+                            <!-- Avatar -->
+                            <a href="#" class="avatar rounded-circle">
+                              <img alt="Image placeholder" src="../../assets/img/theme/bootstrap.jpg">
+                            </a>
+                          </div>
+                          <div class="col">
+                          <h5>{{ $course->course_code }}: {{ $course->name }}</h5>
+                          </div>
+                        </div>
+                      </li>
+                    @endforeach
+                  @endforeach
+                @else
+                  @foreach($user->courses as $course)
+                    <li class="list-group-item px-0">
+                      <div class="row align-items-center">
+                        <div class="col-auto">
+                          <!-- Avatar -->
+                          <a href="#" class="avatar rounded-circle">
+                            <img alt="Image placeholder" src="../../assets/img/theme/bootstrap.jpg">
+                          </a>
+                        </div>
+                        <div class="col">
+                        <h5>{{ $course->course_code }}: {{ $course->name }}</h5>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="list-group-item px-0">
-                  <div class="row align-items-center">
-                    <div class="col-auto">
-                      <!-- Avatar -->
-                      <a href="#" class="avatar rounded-circle">
-                        <img alt="Image placeholder" src="../../assets/img/theme/angular.jpg">
-                      </a>
-                    </div>
-                    <div class="col">
-                      <h5>Angular Now UI Kit PRO</h5>
-                      <div class="progress progress-xs mb-0">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="list-group-item px-0">
-                  <div class="row align-items-center">
-                    <div class="col-auto">
-                      <!-- Avatar -->
-                      <a href="#" class="avatar rounded-circle">
-                        <img alt="Image placeholder" src="../../assets/img/theme/sketch.jpg">
-                      </a>
-                    </div>
-                    <div class="col">
-                      <h5>Black Dashboard</h5>
-                      <div class="progress progress-xs mb-0">
-                        <div class="progress-bar bg-red" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%;"></div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="list-group-item px-0">
-                  <div class="row align-items-center">
-                    <div class="col-auto">
-                      <!-- Avatar -->
-                      <a href="#" class="avatar rounded-circle">
-                        <img alt="Image placeholder" src="../../assets/img/theme/react.jpg">
-                      </a>
-                    </div>
-                    <div class="col">
-                      <h5>React Material Dashboard</h5>
-                      <div class="progress progress-xs mb-0">
-                        <div class="progress-bar bg-teal" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
+                    </li>
+                  @endforeach
+                @endif
               </ul>
             </div>
           </div>
