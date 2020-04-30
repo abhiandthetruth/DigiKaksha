@@ -610,7 +610,11 @@
               </nav>
             </div>
             <div class="col-lg-6 col-5 text-right">
-              <a href="#" class="btn btn-sm btn-neutral">New</a>
+              @if($user->user_level==3)
+                <a href="/students/create" class="btn btn-sm btn-neutral">New Student</a>
+                <a href="/teachers/create" class="btn btn-sm btn-neutral">New Teacher</a>
+                <a href="/admins/create" class="btn btn-sm btn-neutral">New Admin</a>
+              @endif
               <a href="#" class="btn btn-sm btn-neutral">Filters</a>
             </div>
           </div>
