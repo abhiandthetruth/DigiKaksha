@@ -120,7 +120,10 @@ class GroupsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(auth()->user()->user_level < 3) return redirect('home');
+        $group = Group::find($id);
+        $group->delete();
+        return redirect('/groups')->with('status', 'Class Deleted');
     }
 
     //helper functions

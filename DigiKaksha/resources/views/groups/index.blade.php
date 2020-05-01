@@ -651,6 +651,11 @@
               <h3 class="mb-0">Class List</h3>
             </div>
             <!-- Light table -->
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
             <div class="table-responsive">
               <table class="table align-items-center table-flush">
                 <thead class="thead-light">
@@ -691,6 +696,7 @@
                               </div>
                             </td>
                             <td class="text-right">
+                                @if(Auth::user()->user_level==3)
                               <div class="dropdown">
                                 <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   <i class="fas fa-ellipsis-v"></i>
@@ -705,6 +711,7 @@
                                   
                                 </div>
                               </div>
+                              @endif
                             </td>
                           </tr> 
                     @endforeach

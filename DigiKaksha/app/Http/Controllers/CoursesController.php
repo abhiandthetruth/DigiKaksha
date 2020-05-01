@@ -129,7 +129,10 @@ class CoursesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(auth()->user()->user_level < 3) return redirect('home');
+        $course = Course::find($id);
+        $course->delete();
+        return redirect('/courses')->with('status', 'Course Deleted');
     }
 
     public function getInstructors($str)

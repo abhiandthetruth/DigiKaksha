@@ -651,6 +651,11 @@
               <h3 class="mb-0">Course List</h3>
             </div>
             <!-- Light table -->
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
             <div class="table-responsive">
               <table class="table align-items-center table-flush">
                 <thead class="thead-light">
