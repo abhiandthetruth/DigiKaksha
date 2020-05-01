@@ -777,7 +777,7 @@
             <!-- Card header -->
             <div class="card-header">
               <!-- Title -->
-              <h5 class="h3 mb-0">Classes</h5>
+              <a class="h3 mb-0" href="/groups">Classes</a>
             </div>
             <!-- Card body -->
             <div class="card-body">
@@ -914,7 +914,7 @@
             <!-- Card header -->
             <div class="card-header">
               <!-- Title -->
-              <h5 class="h3 mb-0">Courses</h5>
+              <h5 class="h3 mb-0"><a href="/courses">Courses</a></h5>
             </div>
             <!-- Card body -->
             <div class="card-body">

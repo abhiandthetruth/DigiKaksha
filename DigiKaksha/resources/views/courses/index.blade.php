@@ -272,7 +272,7 @@
             <li class="nav-item">
               <a class="nav-link active" href="#navbar-tables" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-tables">
                 <i class="ni ni-align-left-2 text-default"></i>
-                <span class="nav-link-text">Classes</span>
+                <span class="nav-link-text">Courses</span>
               </a>
               <div class="collapse show" id="navbar-tables">
                 <ul class="nav nav-sm flex-column">
@@ -624,12 +624,12 @@
         <div class="header-body">
           <div class="row align-items-center py-4">
             <div class="col-lg-6 col-7">
-              <h6 class="h2 text-white d-inline-block mb-0">Classes</h6>
+              <h6 class="h2 text-white d-inline-block mb-0">Courses</h6>
               <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                   <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
                   <li class="breadcrumb-item"><a href="/home">Dashboard</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Classes</li>
+                  <li class="breadcrumb-item active" aria-current="page">Courses</li>
                 </ol>
               </nav>
             </div>
@@ -648,22 +648,22 @@
           <div class="card">
             <!-- Card header -->
             <div class="card-header border-0">
-              <h3 class="mb-0">Class List</h3>
+              <h3 class="mb-0">Course List</h3>
             </div>
             <!-- Light table -->
             <div class="table-responsive">
               <table class="table align-items-center table-flush">
                 <thead class="thead-light">
                   <tr>
-                    <th scope="col" class="sort" data-sort="name">Class Name</th>
-                    <th scope="col" class="sort" data-sort="budget">Class ID</th>
-                    <th scope="col" class="sort" data-sort="status">Student Count</th>
-                    <th scope="col" class="sort" data-sort="completion">Course Count</th>
+                    <th scope="col" class="sort" data-sort="name">Course Name</th>
+                    <th scope="col" class="sort" data-sort="budget">Course ID</th>
+                    <th scope="col" class="sort" data-sort="status">Instructor Count</th>
+                    <th scope="col" class="sort" data-sort="completion">Class Count</th>
                     <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody class="list">
-                    @foreach($groups as $group)
+                    @foreach($courses as $course)
                         <tr>
                             <th scope="row">
                               <div class="media align-items-center">
@@ -671,40 +671,42 @@
                                   <img alt="Image placeholder" src="../../assets/img/theme/bootstrap.jpg">
                                 </a>
                                 <div class="media-body">
-                                  <span class="name mb-0 text-sm"><a href="/groups/{{$group->id}}">{{$group->name}}</a></span>
+                                  <span class="name mb-0 text-sm"><a href="/courses/{{$course->id}}">{{$course->name}}</a></span>
                                 </div>
                               </div>
                             </th>
                             <td class="budget">
-                              {{$group->group_code}}
+                              {{$course->course_code}}
                             </td>
                             <td>
                               <span class="badge badge-dot mr-4">
                                 <i class="bg-warning"></i>
-                              <span class="status">{{count($group->users)}}</span>
+                              <span class="status">{{count($course->users)}}</span>
                               </span>
                             </td>
                             <td>
                               <div class="d-flex align-items-center">
-                                <span class="completion mr-2">{{count($group->courses)}}</span>
+                                <span class="completion mr-2">{{count($course->groups)}}</span>
                                 <div>
                               </div>
                             </td>
                             <td class="text-right">
+                            @if(Auth::user()->user_level==3)
                               <div class="dropdown">
                                 <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   <i class="fas fa-ellipsis-v"></i>
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                    <form id="delete-form" action="/groups/{{$group->id}}" method="POST" style="display: none;">
-                                        @csrf
-                                        <input type="hidden" name="_method" value="DELETE">
-                                    </form>
-                                    <a class="dropdown-item" href="javascript:{}" onclick="document.getElementById('delete-form').submit();">Delete</a>
-                                  <a class="dropdown-item" href="/groups/{{$group->id}}/edit">Edit</a>
-                                  
-                                </div>
+                                
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                        <a class="dropdown-item" href="/courses/{{$course->id}}/edit">Edit</a>
+                                        <form id="delete-form" action="/courses/{{$course->id}}" method="POST" style="display: none;">
+                                            @csrf
+                                            <input type="hidden" name="_method" value="DELETE">
+                                        </form>
+                                        <a class="dropdown-item" href="javascript:{}" onclick="document.getElementById('delete-form').submit();">Delete</a>
+                                    </div>
                               </div>
+                            @endif
                             </td>
                           </tr> 
                     @endforeach
@@ -716,7 +718,7 @@
               <nav aria-label="...">
                 <ul class="pagination justify-content-end mb-0">
                     @if(Auth::user()->user_level==3)
-                        {{$groups->links()}}
+                        {{$courses->links()}}
                     @endif
                 </ul>
               </nav>

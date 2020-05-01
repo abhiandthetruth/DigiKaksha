@@ -20,16 +20,25 @@ class CoursesController extends Controller
         if($user_level == 1){
             $groups = auth()->user()->groups;
             foreach($groups as $group){
-                array_push($courses,$group->courses);
+                foreach($group->courses as $course){
+                    $flag = false;
+                    foreach($courses as $course1){
+                        if($course1->id==$course->id){
+                            $flag=true;
+                            break;
+                        }
+                    }
+                    if(!$flag) array_push($courses, $course);
+                }
             }
         }
         elseif ($user_level == 2) {
-            array_push($courses, auth()->user()->courses);
+            $courses = auth()->user()->courses;
         }
         else{
-            array_push($courses, Course::all());
+            $courses = Course::paginate(1);
         }
-        return $courses;
+        return view('courses/index')->with('courses',$courses);
     }
 
     /**

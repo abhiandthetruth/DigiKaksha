@@ -37,6 +37,7 @@ class GroupsController extends Controller
         else{
             $groups = Group::paginate(1);
         }
+        //return $groups;
         return view('/groups/index')->with('groups', $groups);
     }
 
