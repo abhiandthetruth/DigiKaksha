@@ -718,6 +718,7 @@
                 </tbody>
               </table>
             </div>
+            
             <!-- Card footer -->
             <div class="card-footer py-4">
               <nav aria-label="...">

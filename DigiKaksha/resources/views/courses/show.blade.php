@@ -648,13 +648,20 @@
             </div>
             <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
               <div class="d-flex justify-content-between">
+                @if(Auth::user()->user_level==3)
                 <a href="/courses/{{$course->id}}/edit" class="btn btn-sm btn-info  mr-4 ">Edit</a>
+                @endif
+
                 <form id="delete-form" action="/courses/{{$course->id}}" method="POST" style="display: none;">
                     @csrf
+                   
                     <input type="hidden" name="_method" value="DELETE">
+                 
                 </form>
+                 @if(Auth::user()->user_level==3)
                 <a href="javascript:{}" onclick="document.getElementById('delete-form').submit();" href="#" class="btn btn-sm btn-danger float-right">Delete</a>
-              </div>
+                @endif
+              </div> <input type="hidden" name="_method" value="DELETE">
             </div>
             <div class="card-body pt-0">
               <div class="row">
@@ -803,6 +810,125 @@
                     @endforeach
                 </ul>
             </div>
+        </div>
+        <div class="card">
+          <!-- Card header -->
+          <div class="card-header border-0">
+            <div class="row">
+              <div class="col-6">
+                <h3 class="mb-0">Attendance Report</h3>
+              </div>
+              <div class="col-6 text-right">
+                <a href="#" class="btn btn-sm btn-danger btn-round btn-icon" data-toggle="tooltip" data-original-title="Report a problem to teacher">
+                  <span class="btn-inner--icon"><i class="fas fa-question"></i></span>
+                  <span class="btn-inner--text">Report a problem</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Light table -->
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush table-hover">
+              <thead class="thead-light">
+                <tr>
+                  <th>
+                    <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" id="table-check-all" type="checkbox">
+                      <label class="custom-control-label" for="table-check-all"></label>
+                    </div>
+                  </th>
+                  <th>Taker</th>
+                  <th>Date</th>
+                  <th>Late Remark</th>
+                  <th>Marked as</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-success">
+                  <th>
+                    <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" id="table-check-all" type="checkbox">
+                      <label class="custom-control-label" for="table-check-all"></label>
+                    </div>
+                  </th>
+                  <td class="table-user">
+                    <b>abhishek</b>
+                  </td>
+                  <td>
+                    <span class="text-muted">10/09/2018</span>
+                  </td>
+                  <td>
+                    <a href="#!" class="font-weight-bold">None</a>
+                  </td>
+                  <td>
+                    Present
+                  </td>
+                </tr>
+                <tr class="table-success">
+                  <th>
+                    <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" id="table-check-all" type="checkbox">
+                      <label class="custom-control-label" for="table-check-all"></label>
+                    </div>
+                  </th>
+                  <td class="table-user">
+                    <b>abhishek</b>
+                  </td>
+                  <td>
+                    <span class="text-muted">10/09/2018</span>
+                  </td>
+                  <td>
+                    <a href="#!" class="font-weight-bold">15 mins late</a>
+                  </td>
+                  <td>
+                    Present
+                  </td>
+                </tr>
+                <tr class="table-warning">
+                  <th>
+                    <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" id="table-check-all" type="checkbox">
+                      <label class="custom-control-label" for="table-check-all"></label>
+                    </div>
+                  </th>
+                  <td class="table-user">
+                    <b>abhishek</b>
+                  </td>
+                  <td>
+                    <span class="text-muted">10/09/2018</span>
+                  </td>
+                  <td>
+                    <a href="#!" class="font-weight-bold">None</a>
+                  </td>
+                  <td>
+                    Absent
+                  </td>
+                </tr>
+                <tr class="table-success">
+                  <th>
+                    <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" id="table-check-all" type="checkbox">
+                      <label class="custom-control-label" for="table-check-all"></label>
+                    </div>
+                  </th>
+                  <td class="table-user">
+                    <b>abhishek</b>
+                  </td>
+                  <td>
+                    <span class="text-muted">10/09/2018</span>
+                  </td>
+                  <td>
+                    <a href="#!" class="font-weight-bold">None</a>
+                  </td>
+                  <td>
+                    Present
+                  </td>
+                </tr>
+               
+              
+              </tbody>
+            </table>
+          </div>
         </div>
       <!-- Footer -->
       <footer class="footer pt-0">
