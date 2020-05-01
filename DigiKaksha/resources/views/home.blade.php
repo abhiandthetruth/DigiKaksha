@@ -806,7 +806,7 @@
                           </div>
                       </li>
                   @endforeach
-                @else
+                @elseif($user->user_level==2)
                   @foreach($user->courses as $course)
                     @foreach ($course->groups as $group)
                       <li class="list-group-item px-0">
@@ -831,6 +831,29 @@
                       </li>
                     @endforeach
                   @endforeach
+                @else
+                      @foreach (App\Group::all()->take(5) as $group)
+                      <li class="list-group-item px-0">
+                        <div class="row align-items-center">
+                        <div class="col-auto">
+                            <!-- Avatar -->
+                            <a href="#" class="avatar rounded-circle">
+                            <img alt="Image placeholder" src="../../assets/img/theme/team-1.jpg">
+                            </a>
+                        </div>
+                        <div class="col ml--2">
+                            <h4 class="mb-0">
+                            <a href="#!">{{$group->name}}</a>
+                            </h4>
+                            <span class="text-success">●</span>
+                            <small>Online</small>
+                        </div>
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-sm btn-primary">Add</button>
+                        </div>
+                        </div>
+                      </li>
+                      @endforeach
                 @endif
               </ul>
             </div>
@@ -938,7 +961,7 @@
                       </li>
                     @endforeach
                   @endforeach
-                @else
+                @elseif($user->user_level==2)
                   @foreach($user->courses as $course)
                     <li class="list-group-item px-0">
                       <div class="row align-items-center">
@@ -954,6 +977,22 @@
                       </div>
                     </li>
                   @endforeach
+                @else
+                    @foreach (App\Course::all()->take(5) as $course)
+                    <li class="list-group-item px-0">
+                      <div class="row align-items-center">
+                        <div class="col-auto">
+                          <!-- Avatar -->
+                          <a href="#" class="avatar rounded-circle">
+                            <img alt="Image placeholder" src="../../assets/img/theme/bootstrap.jpg">
+                          </a>
+                        </div>
+                        <div class="col">
+                        <h5>{{ $course->name }}</h5>
+                        </div>
+                      </div>
+                    </li>
+                    @endforeach
                 @endif
               </ul>
             </div>

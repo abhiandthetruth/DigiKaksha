@@ -122,6 +122,11 @@ class CoursesController extends Controller
     public function update(Request $request, $id)
     {
         if(auth()->user()->user_level < 3) return redirect('home');
+        $course = Course::find($id);
+        if($course->course_code != $request->input('course_code'))
+            $this->validate($request, [
+                'course_code'=>'unique:courses',
+            ]);
         try{
             $instructors = $this->getInstructors($request->input('instructors'));
         }
@@ -134,7 +139,6 @@ class CoursesController extends Controller
         catch(\Exception $e){
             return redirect()->back()->withInput()->withErrors(['classes'=>'Some of the groups are non-existent']);
         }
-        $course = Course::find($id);
         $course->name = $request->input('course-name');
         $course->course_code = $request->input('course_code');
         $course->semester = $request->input('semester');
@@ -162,7 +166,6 @@ class CoursesController extends Controller
         $oldGroups = array_map(function($i){return $i['id'];}, $course->groups()->get()->toArray());
         $course->users()->detach($oldInstructors);
         $course->groups()->detach($oldGroups);
-        $course->users()->attach($instructors);
         $course->delete();
         return redirect('/courses')->with('status', 'Course Deleted');
     }

@@ -86,7 +86,9 @@ class GroupsController extends Controller
      */
     public function show($id)
     {
-        //
+        if(auth()->user()->user_level < 3) return redirect('home');
+        $group = Group::find($id);
+        return view('groups/show')->with('group', $group);
     }
 
     /**
@@ -96,8 +98,10 @@ class GroupsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    { 
+        if(auth()->user()->user_level < 3) return redirect('home');
+        $group = Group::find($id);
+        return view('groups/edit')->with('group', $group);
     }
 
     /**
@@ -109,7 +113,25 @@ class GroupsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if(auth()->user()->user_level < 3) return redirect('home');
+        $group = Group::find($id);
+        if($group->group_code != $request->input('group_code'))
+            $this->validate($request, [
+                'group_code'=>'unique:groups',
+            ]);
+        try{
+            $students = $this->getStudents($request->input('students'));
+        }
+        catch(\Exception $e){
+            return redirect()->back()->withInput()->withErrors(['students'=>'Some of the listed students are non-existent']);
+        }
+        $group->name = $request->input('class-name');
+        $group->group_code = $request->input('group_code');
+        $group->save();
+        $oldStudents = array_map(function($i){return $i['id'];}, $group->users()->get()->toArray());
+        $group->users()->detach($oldStudents);
+        $group->users()->attach($students);
+        return redirect('/groups'.'/'.$group->id)->with('status', 'Group updated!');
     }
 
     /**
@@ -122,6 +144,10 @@ class GroupsController extends Controller
     {
         if(auth()->user()->user_level < 3) return redirect('home');
         $group = Group::find($id);
+        $oldStudents = array_map(function($i){return $i['id'];}, $group->users()->get()->toArray());
+        $oldCourses = array_map(function($i){return $i['id'];}, $group->courses()->get()->toArray());
+        $group->users()->detach($oldStudents);
+        $group->courses()->detach($oldCourses);
         $group->delete();
         return redirect('/groups')->with('status', 'Class Deleted');
     }

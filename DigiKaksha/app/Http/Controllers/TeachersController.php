@@ -48,7 +48,7 @@ class TeachersController extends Controller
         $user->user_level = 2;
         $user->roll_no = $request->input('roll_no',NULL);
         $user->save();
-        return redirect('/teachers/created')->with('status', 'Teacher created!');
+        return redirect('/teachers/create')->with('status', 'Teacher created!');
     }
 
     /**
