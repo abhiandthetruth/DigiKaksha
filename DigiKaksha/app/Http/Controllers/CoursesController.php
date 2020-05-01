@@ -36,7 +36,7 @@ class CoursesController extends Controller
             $courses = auth()->user()->courses;
         }
         else{
-            $courses = Course::paginate(1);
+            $courses = Course::paginate(10);
         }
         return view('courses/index')->with('courses',$courses);
     }
