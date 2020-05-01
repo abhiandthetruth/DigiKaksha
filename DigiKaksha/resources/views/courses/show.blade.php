@@ -729,15 +729,16 @@
           </div>
         </div>
         <div class="col-xl-8 order-xl-1">
-          <div class="row">
+          @if(Auth::user()->user_level==1)
+          <div class="row">   
             <div class="col-lg-6">
               <div class="card bg-gradient-info border-0">
                 <!-- Card body -->
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0 text-white">Total traffic</h5>
-                      <span class="h2 font-weight-bold mb-0 text-white">350,897</span>
+                      <h5 class="card-title text-uppercase text-muted mb-0 text-white">Attendance</h5>
+                      <span class="h2 font-weight-bold mb-0 text-white">8/10</span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-white text-dark rounded-circle shadow">
@@ -746,8 +747,8 @@
                     </div>
                   </div>
                   <p class="mt-3 mb-0 text-sm">
-                    <span class="text-white mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                    <span class="text-nowrap text-light">Since last month</span>
+                    <span class="text-white mr-2">80.00%</span>
+                    <span class="text-nowrap text-light">Required 75%</span>
                   </p>
                 </div>
               </div>
@@ -758,8 +759,8 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0 text-white">Performance</h5>
-                      <span class="h2 font-weight-bold mb-0 text-white">49,65%</span>
+                      <h5 class="card-title text-uppercase text-muted mb-0 text-white">Grades</h5>
+                      <span class="h2 font-weight-bold mb-0 text-white">8.00/10</span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-white text-dark rounded-circle shadow">
@@ -768,12 +769,60 @@
                     </div>
                   </div>
                   <p class="mt-3 mb-0 text-sm">
-                    <span class="text-white mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                    <span class="text-nowrap text-light">Since last month</span>
+                    <span class="text-white mr-2">Based on 10 tests
+                    <span class="text-nowrap text-light">4.00 minimum required</span>
                   </p>
                 </div>
               </div>
             </div>
+            @else
+            <div class="row">   
+              <div class="col-lg-6">
+                <div class="card bg-gradient-info border-0">
+                  <!-- Card body -->
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col">
+                        <h5 class="card-title text-uppercase text-muted mb-0 text-white">Average Attendance</h5>
+                        <span class="h2 font-weight-bold mb-0 text-white">8/10</span>
+                      </div>
+                      <div class="col-auto">
+                        <div class="icon icon-shape bg-white text-dark rounded-circle shadow">
+                          <i class="ni ni-active-40"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="mt-3 mb-0 text-sm">
+                      <span class="text-white mr-2">80.00%</span>
+                      <span class="text-nowrap text-light">Required 75%</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="card bg-gradient-danger border-0">
+                  <!-- Card body -->
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col">
+                        <h5 class="card-title text-uppercase text-muted mb-0 text-white">Average Grades</h5>
+                        <span class="h2 font-weight-bold mb-0 text-white">8.00/10</span>
+                      </div>
+                      <div class="col-auto">
+                        <div class="icon icon-shape bg-white text-dark rounded-circle shadow">
+                          <i class="ni ni-spaceship"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="mt-3 mb-0 text-sm">
+                      <span class="text-white mr-2">Based on 10 tests
+                      <span class="text-nowrap text-light">4.00 minimum required</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            @endif
+
           </div>
           @if (session('status'))
                     <div class="alert alert-success">
@@ -811,6 +860,7 @@
                 </ul>
             </div>
         </div>
+        @if(Auth::user()->user_level==1)
         <div class="card">
           <!-- Card header -->
           <div class="card-header border-0">
@@ -923,13 +973,12 @@
                   <td>
                     Present
                   </td>
-                </tr>
-               
-              
+                </tr> 
               </tbody>
             </table>
           </div>
         </div>
+        @endif
       <!-- Footer -->
       <footer class="footer pt-0">
         <div class="row align-items-center justify-content-lg-between">
