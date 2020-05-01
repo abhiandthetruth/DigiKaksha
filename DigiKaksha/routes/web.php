@@ -13,12 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//mark attendance testing
+Route::get('/groups/mark/{id}', function ($id) {
+    return view('groups/markAttendance');
+ });
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('groups', 'GroupsController');
 Route::resource('courses', 'CoursesController');
