@@ -15,4 +15,7 @@ class Group extends Model
     {
         return $this->belongsToMany('App\Course');
     }
+    public function __toString() {
+        return $this->group_code;
+    }
 }

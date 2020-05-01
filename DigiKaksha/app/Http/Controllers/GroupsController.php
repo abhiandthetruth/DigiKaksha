@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Group;
+use App\Course;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,29 @@ class GroupsController extends Controller
      */
     public function index()
     {
-        //
+        $groups = array();
+        $user_level = auth()->user()->user_level;
+        if($user_level==1){
+            $groups = auth()->user()->groups;
+        }
+        elseif($user_level==2){
+            $courses = auth()->user()->courses;
+            foreach($courses as $course){
+                $flag = false;
+                foreach($course->groups as $group){
+                    foreach($groups as $group1) {
+                        if ($group1->group_code==$group->group_code){
+                            $flag = true;
+                        }
+                    }
+                    if(!$flag) array_push($groups, $group);
+                }  
+            }
+        }
+        else{
+            $groups = Group::paginate(1);
+        }
+        return view('/groups/index')->with('groups', $groups);
     }
 
     /**

@@ -15,7 +15,21 @@ class CoursesController extends Controller
      */
     public function index()
     {
-        //
+        $courses = array();
+        $user_level = auth()->user()->user_level;
+        if($user_level == 1){
+            $groups = auth()->user()->groups;
+            foreach($groups as $group){
+                array_push($courses,$group->courses);
+            }
+        }
+        elseif ($user_level == 2) {
+            array_push($courses, auth()->user()->courses);
+        }
+        else{
+            array_push($courses, Course::all());
+        }
+        return $courses;
     }
 
     /**
