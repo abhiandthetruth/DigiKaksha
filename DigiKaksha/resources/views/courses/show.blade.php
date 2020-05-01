@@ -628,7 +628,7 @@
         <div class="row">
           <div class="col-lg-7 col-md-10">
           <h1 class="display-2 text-white">{{$course->name}}</h1>
-            <p class="text-white mt-0 mb-5">This is your showcase page for the course {{$course->name}}. You can see all the course related information here.</p>
+            <p class="text-white mt-0 mb-5">This is the showcase page for the course {{$course->name}}. You can see all the course related information here.</p>
             @if(Auth::user()->user_level==3)
                 <a href="/courses/{{$course->id}}/edit" class="btn btn-neutral">Edit Course</a>
             @endif
@@ -768,6 +768,11 @@
               </div>
             </div>
           </div>
+          @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                    @endif
           <div class="card">
             <div class="card-header">
               <div class="row align-items-center">

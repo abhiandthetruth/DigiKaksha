@@ -107,7 +107,9 @@ class CoursesController extends Controller
      */
     public function edit($id)
     {
-        //
+        if(auth()->user()->user_level < 3) return redirect('home');
+        $course = Course::find($id);
+        return view('courses/edit')->with('course', $course);
     }
 
     /**
@@ -119,7 +121,31 @@ class CoursesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if(auth()->user()->user_level < 3) return redirect('home');
+        try{
+            $instructors = $this->getInstructors($request->input('instructors'));
+        }
+        catch(\Exception $e){
+            return redirect()->back()->withInput()->withErrors(['instructors'=>'Some of the instructors are non-existent']);
+        }
+        try{
+            $groups = $this->getGroups($request->input('classes'));
+        }
+        catch(\Exception $e){
+            return redirect()->back()->withInput()->withErrors(['classes'=>'Some of the groups are non-existent']);
+        }
+        $course = Course::find($id);
+        $course->name = $request->input('course-name');
+        $course->course_code = $request->input('course_code');
+        $course->semester = $request->input('semester');
+        $course->save();
+        $oldInstructors = array_map(function($i){return $i['id'];}, $course->users()->get()->toArray());
+        $oldGroups = array_map(function($i){return $i['id'];}, $course->groups()->get()->toArray());
+        $course->users()->detach($oldInstructors);
+        $course->groups()->detach($oldGroups);
+        $course->users()->attach($instructors);
+        $course->groups()->attach($groups);
+        return redirect('/courses'.'/'.$course->id)->with('status', 'Course Updated!');
     }
 
     /**
@@ -132,6 +158,11 @@ class CoursesController extends Controller
     {
         if(auth()->user()->user_level < 3) return redirect('home');
         $course = Course::find($id);
+        $oldInstructors = array_map(function($i){return $i['id'];}, $course->users()->get()->toArray());
+        $oldGroups = array_map(function($i){return $i['id'];}, $course->groups()->get()->toArray());
+        $course->users()->detach($oldInstructors);
+        $course->groups()->detach($oldGroups);
+        $course->users()->attach($instructors);
         $course->delete();
         return redirect('/courses')->with('status', 'Course Deleted');
     }

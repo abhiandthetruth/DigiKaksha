@@ -13,14 +13,14 @@
                         {{ session('status') }}
                     </div>
                     @endif
-                    <form method="POST" action="/courses">
+                    <form method="POST" action="/courses/{{$course->id}}">
                         @csrf
-
+                        <input type="hidden" name="_method" value="put">    
                         <div class="form-group row">
                             <label for="course-name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="course-name" type="text" class="form-control @error('course-name') is-invalid @enderror" name="course-name" value="{{ old('course-name') }}" required autocomplete="course-name" autofocus>
+                                <input id="course-name" type="text" class="form-control @error('course-name') is-invalid @enderror" name="course-name" value="{{ $course->name }}" required autocomplete="course-name" autofocus>
 
                                 @error('course-name')
                                     <span class="invalid-feedback" role="alert">
@@ -34,7 +34,7 @@
                             <label for="semester" class="col-md-4 col-form-label text-md-right">{{ __('Semester') }}</label>
 
                             <div class="col-md-6">
-                                <input id="semester" type="text" class="form-control @error('semester') is-invalid @enderror" name="semester" value="{{ old('semester') }}" required autocomplete="semester">
+                                <input id="semester" type="text" class="form-control @error('semester') is-invalid @enderror" name="semester" value="{{ $course->semester }}" required autocomplete="semester">
 
                                 @error('semester')
                                     <span class="invalid-feedback" role="alert">
@@ -48,7 +48,7 @@
                             <label for="course_code" class="col-md-4 col-form-label text-md-right">{{ __('Course Code') }}</label>
 
                             <div class="col-md-6">
-                                <input id="course_code" type="text" class="form-control @error('course_code') is-invalid @enderror" name="course_code" value="{{ old('course_code') }}" required autocomplete="course_code">
+                                <input id="course_code" type="text" class="form-control @error('course_code') is-invalid @enderror" name="course_code" value="{{ $course->course_code }}" required autocomplete="course_code">
 
                                 @error('course_code')
                                     <span class="invalid-feedback" role="alert">
@@ -59,7 +59,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="instructors" class="col-md-4 col-form-label text-md-right">{{ __('Instructors') }}</label>
+                            <label for="instructors" class="col-md-4 col-form-label text-md-right">{{ __('New Instructors') }}</label>
 
                             <div class="col-md-6">
                                 <input id="instructors" type="text" class="form-control @error('instructors') is-invalid @enderror" name="instructors" value="{{ old('instructors') }}" required autocomplete="instructors">
@@ -73,7 +73,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="classes" class="col-md-4 col-form-label text-md-right">{{ __('Classes') }}</label>
+                            <label for="classes" class="col-md-4 col-form-label text-md-right">{{ __('New Classes') }}</label>
 
                             <div class="col-md-6">
                                 <input id="classes" type="text" class="form-control @error('classes') is-invalid @enderror" name="classes" value="{{ old('classes') }}" required autocomplete="classes">
@@ -89,7 +89,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Create') }}
+                                    {{ __('Update') }}
                                 </button>
                             </div>
                         </div>
