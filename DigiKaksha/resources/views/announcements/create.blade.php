@@ -43,7 +43,7 @@
                                 @enderror
                             </div>
                         </div>
-
+                        <input type="hidden" name="course-code" value="{{ $course->course_code }}">
                         <div class="form-group row">
                             <label for="course_code" class="col-md-4 col-form-label text-md-right">{{ __('Course Code') }}</label>
 

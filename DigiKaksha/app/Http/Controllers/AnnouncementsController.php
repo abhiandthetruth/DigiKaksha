@@ -45,15 +45,16 @@ class AnnouncementsController extends Controller
     public function store(Request $request)
     {
         if(auth()->user()->user_level < 2) return redirect('home');
+        $course = Course::where('course_code', $request->input('course-code'))->first();
         $announcement = new Announcement();
         $announcement->title = $request->input('title');
         $announcement->body = $request->input('body');
         if($request->input('graded')) $announcement->graded=1;
         else $announcement->graded=0;
-        $announcement->user_id = auth()->user()-id;
-        $announcement->course_id = Course::where('course_code', $request->input('course_code'));
+        $announcement->user_id = auth()->user()->id;
+        $announcement->course_id = $course->id;
         $announcement->save();
-
+        return redirect('/courses'.'/'.$course->id)->with('status','Announcement made!');
     }
 
     /**
