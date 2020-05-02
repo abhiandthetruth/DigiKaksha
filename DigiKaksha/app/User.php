@@ -54,4 +54,8 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Submission');
     }
+    public function hasSubmission($announcement){
+        foreach($this->submissions as $submission) if($submission->announcement_id == $announcement->id) return true;
+        return false;
+    }
 }

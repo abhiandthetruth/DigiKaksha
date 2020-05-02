@@ -23,7 +23,10 @@ class SubmissionsController extends Controller
      */
     public function create()
     {
-        
+        if(auth()->user()->user_level >= 2) return redirect('home');
+        $announcement = \App\Announcement::find(\Request::get('announcement'));
+        if(!$this->isValid($announcement)) return redirect('home');
+        return view('submissions/create')->with('announcement', $announcement);
     }
 
     /**
@@ -34,7 +37,19 @@ class SubmissionsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(auth()->user()->user_level >= 2) return redirect('home');
+        $announcement = \App\Announcement::find($request->input('announcement'));
+        if(!$this->isValid($announcement)) return redirect('home');
+        foreach(auth()->user()->submissions as $submission){
+            if($submission->announcement->id==$announcement->id)
+                return redirect()->back()->with('status', 'A submission has already been made');
+        }
+        $submission = new \App\Submission();
+        $submission->announcement_id = $request->input('announcement');
+        $submission->body = $request->input('body');
+        $submission->user_id = auth()->user()->id;
+        $submission->save();
+        return redirect('/announcements'.'/'.$announcement->id)->with('status', 'Submission done!');
     }
 
     /**
@@ -56,7 +71,10 @@ class SubmissionsController extends Controller
      */
     public function edit($id)
     {
-        //
+        if(auth()->user()->user_level < 2) return redirect('home');
+        $submission = \App\Submission::find($id);
+        if(!$this->checkEditAccess($submission->announcement->course)) return redirect('home');
+        return view('submissions/edit')->with('submission', $submission);
     }
 
     /**
@@ -68,7 +86,13 @@ class SubmissionsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if(auth()->user()->user_level < 2) return redirect('home');
+        $submission = \App\Submission::find($id);
+        if(!$this->checkEditAccess($submission->announcement->course)) return redirect('home');
+        $submission->grade = $request->input('grade');
+        $submission->comment = $request->input('comment');
+        $submission->save();
+        return redirect('/announcements'.'/'.$submission->announcement->id)->with('status', 'Submission for '.$submission->user->roll_no.' graded succesfully!');
     }
 
     /**
@@ -80,5 +104,31 @@ class SubmissionsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function isValid($announcement)
+    {
+        $flag = false;
+        $course = $announcement->course;
+        foreach(auth()->user()->groups as $group) {
+            foreach($group->courses as $course1){
+                if($course1->id==$course->id){
+                    $flag = true;
+                    break;
+                }
+            }
+        }
+        return $flag;
+    }
+    public function checkEditAccess($course)
+    {
+        $flag = false;
+        foreach($course->users as $user) {
+            if($user->id==auth()->user()->id or auth()->user()->user_level == 3){
+                $flag = true;
+                break;
+            }
+        }
+        return $flag;
     }
 }

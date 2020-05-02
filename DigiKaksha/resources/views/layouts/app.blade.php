@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="../../assets/vendor/quill/dist/quill.core.css">
     <!-- Argon CSS -->
     <link rel="stylesheet" href="../../assets/css/argon.min5438.css?v=1.2.0" type="text/css">
+    <script src="../../assets/vendor/dropzone/dist/min/dropzone.min.js"></script>
     <!-- Google Tag Manager -->
     <script>
         (function(w, d, s, l, i) {
@@ -108,5 +109,6 @@
             @yield('content')
         </main>
     </div>
+    
 </body>
 </html>

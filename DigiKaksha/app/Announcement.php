@@ -16,6 +16,6 @@ class Announcement extends Model
     }
     public function submissions()
     {
-        return $this->hasMany('App\Announcement');
+        return $this->hasMany('App\Submission');
     }
 }

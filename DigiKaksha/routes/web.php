@@ -31,4 +31,5 @@ Route::resource('students', 'StudentsController');
 Route::resource('teachers', 'TeachersController');
 Route::resource('admins', 'AdminsController');
 Route::resource('announcements', 'AnnouncementsController');
+Route::resource('submissions', 'SubmissionsController');
 
