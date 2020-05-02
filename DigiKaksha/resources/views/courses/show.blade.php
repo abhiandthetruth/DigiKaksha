@@ -1014,7 +1014,6 @@
               <th scope="col" class="sort" data-sort="name">Title</th>
               <th scope="col" class="sort" data-sort="budget">Time</th>
               <th scope="col" class="sort" data-sort="completion">Made by</th>
-              <th scope="col"></th>
             </tr>
           </thead>
           <tbody class="list">
@@ -1037,19 +1036,6 @@
                         <div class="d-flex align-items-center">
                           <span class="completion mr-2">{{$announcement->user->name}}</span>
                         </div>
-                      </td>
-                      <td class="text-right">
-                      @if($announcement->graded==1 and Auth::user()->user_level==1)
-                        <div class="dropdown">
-                          <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-ellipsis-v"></i>
-                          </a>
-                          
-                              <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                  <a class="dropdown-item" href="">Add Submission</a>
-                              </div>
-                        </div>
-                      @endif
                       </td>
                     </tr> 
               @endforeach
