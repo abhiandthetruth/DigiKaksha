@@ -35,7 +35,7 @@
   <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
     <div class="scrollbar-inner">
       <div class="sidenav-header  d-flex  align-items-center">
-        <a class="navbar-brand" href="dashboard.html">
+        <a class="navbar-brand" href="home">
           <img src="../../assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
         </a>
         <div class=" ml-auto ">
@@ -636,7 +636,7 @@
                   <li class="checklist-entry list-group-item flex-column align-items-start py-4 px-4">
                     <div class="checklist-item checklist-item-success">
                       <div class="checklist-info">
-                        <h5 class="checklist-title mb-0">Call with Dave</h5>
+                        <h5 class="checklist-title mb-0">Call Abhishek for project</h5>
                         <small>10:30 AM</small>
                       </div>
                       <div>
@@ -650,7 +650,7 @@
                   <li class="checklist-entry list-group-item flex-column align-items-start py-4 px-4">
                     <div class="checklist-item checklist-item-warning">
                       <div class="checklist-info">
-                        <h5 class="checklist-title mb-0">Lunch meeting</h5>
+                        <h5 class="checklist-title mb-0">Assignment</h5>
                         <small>10:30 AM</small>
                       </div>
                       <div>
@@ -664,8 +664,8 @@
                   <li class="checklist-entry list-group-item flex-column align-items-start py-4 px-4">
                     <div class="checklist-item checklist-item-info">
                       <div class="checklist-info">
-                        <h5 class="checklist-title mb-0">Argon Dashboard Launch</h5>
-                        <small>10:30 AM</small>
+                        <h5 class="checklist-title mb-0">Excercise</h5>
+                        <small>11:30 AM</small>
                       </div>
                       <div>
                         <div class="custom-control custom-checkbox custom-checkbox-info">
@@ -678,8 +678,8 @@
                   <li class="checklist-entry list-group-item flex-column align-items-start py-4 px-4">
                     <div class="checklist-item checklist-item-danger">
                       <div class="checklist-info">
-                        <h5 class="checklist-title mb-0">Winter Hackaton</h5>
-                        <small>10:30 AM</small>
+                        <h5 class="checklist-title mb-0">College event</h5>
+                        <small>12 AM</small>
                       </div>
                       <div>
                         <div class="custom-control custom-checkbox custom-checkbox-danger">
