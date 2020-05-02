@@ -16,13 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('groups', 'GroupsController');
 Route::resource('courses', 'CoursesController');
 Route::resource('students', 'StudentsController');
 Route::resource('teachers', 'TeachersController');
 Route::resource('admins', 'AdminsController');
+Route::resource('announcements', 'AnnouncementsController');
 

@@ -632,6 +632,12 @@
             @if(Auth::user()->user_level==3)
                 <a href="/courses/{{$course->id}}/edit" class="btn btn-neutral">Edit Course</a>
             @endif
+            @foreach($course->users as $user)
+              @if(Auth::user()->id == $user->id or Auth::user()->user_level==3)
+                <a href="/announcements/create?course={{$course->id}}" class="btn btn-info">Make Announcement</a> 
+                @break
+              @endif
+            @endforeach
          </div>
         </div>
       </div>

@@ -16,4 +16,8 @@ class Course extends Model
     {
         return $this->belongsToMany('App\Group');
     }
+    public function announcements()
+    {
+        return $this->hasMany('App\Announcement');
+    }
 }
