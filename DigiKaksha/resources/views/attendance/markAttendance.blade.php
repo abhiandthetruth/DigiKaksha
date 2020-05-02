@@ -46,14 +46,14 @@
   <meta property="og:description" content="Start your development with a Dashboard for Bootstrap 4." />
   <meta property="og:site_name" content="Creative Tim" />
   <!-- Favicon -->
-  <link rel="icon" href="../../assets/img/brand/favicon.png" type="image/png">
+  <link rel="icon" href="/assets/img/brand/favicon.png" type="image/png">
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
-  <link rel="stylesheet" href="../../assets/vendor/nucleo/css/nucleo.css" type="text/css">
-  <link rel="stylesheet" href="../../assets/vendor/%40fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <link rel="stylesheet" href="/assets/vendor/nucleo/css/nucleo.css" type="text/css">
+  <link rel="stylesheet" href="/assets/vendor/%40fortawesome/fontawesome-free/css/all.min.css" type="text/css">
   <!-- Argon CSS -->
-  <link rel="stylesheet" href="../../assets/css/argon.min5438.css?v=1.2.0" type="text/css">
+  <link rel="stylesheet" href="/assets/css/argon.min5438.css?v=1.2.0" type="text/css">
   <!-- Google Tag Manager -->
   <script>
     (function(w, d, s, l, i) {
@@ -428,7 +428,7 @@
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="../../assets/img/theme/team-1.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="/assets/img/theme/team-1.jpg" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -447,7 +447,7 @@
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="../../assets/img/theme/team-2.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="/assets/img/theme/team-2.jpg" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -466,7 +466,7 @@
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="../../assets/img/theme/team-3.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="/assets/img/theme/team-3.jpg" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -574,7 +574,7 @@
                   <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
                       <span class="avatar avatar-sm rounded-circle">
-                        <img alt="Image placeholder" src="../../assets/img/theme/team-4.jpg">
+                        <img alt="Image placeholder" src="/assets/img/theme/team-4.jpg">
                       </span>
                       <div class="media-body  ml-2  d-none d-lg-block">
                         <span class="mb-0 text-sm  font-weight-bold"> {{ Auth::user()->name }} </span>
@@ -647,18 +647,21 @@
       <div class="row">
         <div class="col">
             <div class="card">
+              <form id="att" method="post" action='<?php echo "/attendance/mark/".$cid."/".$gid;?>'>
+                @csrf
                 <!-- Card header -->
                 <div class="card-header border-0">
                   <div class="row">
                     <div class="col-6">
-                      <h3 class="mb-0">Marking attendance for Class X</h3>
+                      <h3 class="mb-0">Marking attendance for Class {{$group->name}}</h3>
                     </div>
                     <div class="col-6 text-right">
-                        <input class="form-control" type="datetime-local" value="2018-11-23T10:30:00" id="example-datetime-local-input">
+                        <input class="form-control" name="date" type="datetime-local" value="2018-11-23T10:30:00" id="example-datetime-local-input">
                     </div>
                   </div>
                 </div>
-                <!-- Light table -->
+                
+                  <!-- Light table -->
                 <div class="table-responsive">
                   <table class="table align-items-center table-flush table-hover">
                     <thead class="thead-light">
@@ -675,7 +678,9 @@
                         <th>Present</th>
                       </tr>
                     </thead>
+                    
                     <tbody>
+                      @foreach ($group->users as $student)
                         <tr class="table-">
                             <th>
                               <div class="custom-control custom-checkbox">
@@ -684,137 +689,22 @@
                               </div>
                             </th>
                             <td class="table-user">
-                              <b>Alex Smith</b>
+                              <b> {{$student->name}}</b>
                             </td>
                             <td>
-                              <span class="text-muted">IIT2018040</span>
-                            </td>
-                            <td>
-                                <input class="form-control" type="text" value="None" id="example-text-input">
-                            </td>
-                            <td>
-                              <label class="custom-toggle">
-                                <input type="checkbox">
-                                <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Yes"></span>
-                              </label>
-                            </td>
-                          </tr>
-                          <tr class="table-">
-                            <th>
-                              <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" id="table-check-all" type="checkbox">
-                                <label class="custom-control-label" for="table-check-all"></label>
-                              </div>
-                            </th>
-                            <td class="table-user">
-                              <b>Alex Smith</b>
-                            </td>
-                            <td>
-                              <span class="text-muted">IIT2018040</span>
+                              <span class="text-muted">{{$student->roll_no}}</span>
                             </td>
                             <td>
                                 <input class="form-control" type="text" value="None" id="example-text-input">
                             </td>
                             <td>
                               <label class="custom-toggle">
-                                <input type="checkbox">
+                                <input type="checkbox" name="{{$student->roll_no}}">
                                 <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Yes"></span>
                               </label>
                             </td>
                           </tr>
-                          <tr class="table-">
-                            <th>
-                              <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" id="table-check-all" type="checkbox">
-                                <label class="custom-control-label" for="table-check-all"></label>
-                              </div>
-                            </th>
-                            <td class="table-user">
-                              <b>Alex Smith</b>
-                            </td>
-                            <td>
-                              <span class="text-muted">IIT2018040</span>
-                            </td>
-                            <td>
-                                <input class="form-control" type="text" value="None" id="example-text-input">
-                            </td>
-                            <td>
-                              <label class="custom-toggle">
-                                <input type="checkbox">
-                                <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Yes"></span>
-                              </label>
-                            </td>
-                          </tr>
-                          <tr class="table-">
-                            <th>
-                              <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" id="table-check-all" type="checkbox">
-                                <label class="custom-control-label" for="table-check-all"></label>
-                              </div>
-                            </th>
-                            <td class="table-user">
-                              <b>Alex Smith</b>
-                            </td>
-                            <td>
-                              <span class="text-muted">IIT2018040</span>
-                            </td>
-                            <td>
-                                <input class="form-control" type="text" value="None" id="example-text-input">
-                            </td>
-                            <td>
-                              <label class="custom-toggle">
-                                <input type="checkbox">
-                                <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Yes"></span>
-                              </label>
-                            </td>
-                          </tr>
-                          <tr class="table-">
-                            <th>
-                              <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" id="table-check-all" type="checkbox">
-                                <label class="custom-control-label" for="table-check-all"></label>
-                              </div>
-                            </th>
-                            <td class="table-user">
-                              <b>Alex Smith</b>
-                            </td>
-                            <td>
-                              <span class="text-muted">IIT2018040</span>
-                            </td>
-                            <td>
-                                <input class="form-control" type="text" value="None" id="example-text-input">
-                            </td>
-                            <td>
-                              <label class="custom-toggle">
-                                <input type="checkbox">
-                                <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Yes"></span>
-                              </label>
-                            </td>
-                          </tr>
-                          <tr class="table-">
-                            <th>
-                              <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" id="table-check-all" type="checkbox">
-                                <label class="custom-control-label" for="table-check-all"></label>
-                              </div>
-                            </th>
-                            <td class="table-user">
-                              <b>Alex Smith</b>
-                            </td>
-                            <td>
-                              <span class="text-muted">IIT2018040</span>
-                            </td>
-                            <td>
-                                <input class="form-control" type="text" value="None" id="example-text-input">
-                            </td>
-                            <td>
-                              <label class="custom-toggle">
-                                <input type="checkbox">
-                                <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Yes"></span>
-                              </label>
-                            </td>
-                          </tr>
-                          
+                          @endforeach
                     </tbody>
                   </table>
                 </div>
@@ -824,14 +714,14 @@
                         <h3 class="mb-0"></h3>
                       </div>
                       <div class="col-6 text-right">
-                        <a href="#" class="btn btn-sm btn-success btn-round btn-icon" data-toggle="tooltip" data-original-title="Edit product">
+                        <a onclick="document.getElementById('att').submit();"  class="btn btn-sm btn-success btn-round btn-icon" data-toggle="tooltip" data-original-title="Edit product">
                           <span class="btn-inner--icon"><i class="fas fa-check"></i></span>
                           <span class="btn-inner--text">Submit</span>
                         </a>
                       </div>
-               
             <!-- Card footer -->
           </div>
+        </form>
         </div>
       </div>
       <!-- Footer -->
@@ -864,15 +754,14 @@
   </div>
   <!-- Argon Scripts -->
   <!-- Core -->
-  <script src="../../assets/vendor/jquery/dist/jquery.min.js"></script>
-  <script src="../../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../../assets/vendor/js-cookie/js.cookie.js"></script>
-  <script src="../../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-  <script src="../../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+  <script src="/assets/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/vendor/js-cookie/js.cookie.js"></script>
+  <script src="/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+  <script src="/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
   <!-- Argon JS -->
-  <script src="../../assets/js/argon.min5438.js?v=1.2.0"></script>
-  <!-- Demo JS - remove this in your project -->
-  <script src="../../assets/js/demo.min.js"></script>
+  <script src="/assets/js/argon.min5438.js?v=1.2.0"></script>
+
   <script>
     // Facebook Pixel Code Don't Delete
     ! function(f, b, e, v, n, t, s) {

@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//mark attendance testing
-Route::get('/groups/mark/{id}', function ($id) {
-    return view('groups/markAttendance');
- });
 
 
 
@@ -32,4 +28,12 @@ Route::resource('teachers', 'TeachersController');
 Route::resource('admins', 'AdminsController');
 Route::resource('announcements', 'AnnouncementsController');
 Route::resource('submissions', 'SubmissionsController');
+
+
+
+//Attedance routes -  Note Security aspects are not added. 
+Route::POST('/attendance/request/{cid}','attendanceController@processRequest');
+Route::GET('/attendance/mark/{cid}/{gid}','attendanceController@showForm');
+Route::POST('/attendance/mark/{cid}/{gid}','attendanceController@markAttendance');
+
 

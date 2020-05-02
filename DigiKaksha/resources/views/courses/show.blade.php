@@ -744,7 +744,7 @@
                   <div class="row">
                     <div class="col">
                       <h5 class="card-title text-uppercase text-muted mb-0 text-white">Attendance</h5>
-                      <span class="h2 font-weight-bold mb-0 text-white">8/10</span>
+                      <span class="h2 font-weight-bold mb-0 text-white">{{$present}}/{{$total}}</span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-white text-dark rounded-circle shadow">
@@ -753,7 +753,7 @@
                     </div>
                   </div>
                   <p class="mt-3 mb-0 text-sm">
-                    <span class="text-white mr-2">80.00%</span>
+                    <span class="text-white mr-2">{{$present*100/$total}}%</span>
                     <span class="text-nowrap text-light">Required 75%</span>
                   </p>
                 </div>
@@ -900,47 +900,12 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach($markedAttendances as $att)
+                @if($att->present)
                 <tr class="table-success">
-                  <th>
-                    <div class="custom-control custom-checkbox">
-                      <input class="custom-control-input" id="table-check-all" type="checkbox">
-                      <label class="custom-control-label" for="table-check-all"></label>
-                    </div>
-                  </th>
-                  <td class="table-user">
-                    <b>abhishek</b>
-                  </td>
-                  <td>
-                    <span class="text-muted">10/09/2018</span>
-                  </td>
-                  <td>
-                    <a href="#!" class="font-weight-bold">None</a>
-                  </td>
-                  <td>
-                    Present
-                  </td>
-                </tr>
-                <tr class="table-success">
-                  <th>
-                    <div class="custom-control custom-checkbox">
-                      <input class="custom-control-input" id="table-check-all" type="checkbox">
-                      <label class="custom-control-label" for="table-check-all"></label>
-                    </div>
-                  </th>
-                  <td class="table-user">
-                    <b>abhishek</b>
-                  </td>
-                  <td>
-                    <span class="text-muted">10/09/2018</span>
-                  </td>
-                  <td>
-                    <a href="#!" class="font-weight-bold">15 mins late</a>
-                  </td>
-                  <td>
-                    Present
-                  </td>
-                </tr>
+                @else
                 <tr class="table-warning">
+                @endif
                   <th>
                     <div class="custom-control custom-checkbox">
                       <input class="custom-control-input" id="table-check-all" type="checkbox">
@@ -948,38 +913,19 @@
                     </div>
                   </th>
                   <td class="table-user">
-                    <b>abhishek</b>
+                    <b>{{$att->taker}}</b>
                   </td>
                   <td>
-                    <span class="text-muted">10/09/2018</span>
+                    <span class="text-muted">{{$att->date}}</span>
                   </td>
                   <td>
                     <a href="#!" class="font-weight-bold">None</a>
                   </td>
                   <td>
-                    Absent
+                    @if($att->present)Present @else Absent @endif
                   </td>
                 </tr>
-                <tr class="table-success">
-                  <th>
-                    <div class="custom-control custom-checkbox">
-                      <input class="custom-control-input" id="table-check-all" type="checkbox">
-                      <label class="custom-control-label" for="table-check-all"></label>
-                    </div>
-                  </th>
-                  <td class="table-user">
-                    <b>abhishek</b>
-                  </td>
-                  <td>
-                    <span class="text-muted">10/09/2018</span>
-                  </td>
-                  <td>
-                    <a href="#!" class="font-weight-bold">None</a>
-                  </td>
-                  <td>
-                    Present
-                  </td>
-                </tr> 
+                @endforeach
               </tbody>
             </table>
           </div>
@@ -993,10 +939,12 @@
           </div>
           <!-- Card body -->
           <div class="card-body">
-            <form>
-              <select class="form-control" data-toggle="select">
-                <option>Section A</option>
-                <option>Section B</option>
+            <form method="post" action='<?php echo "/attendance/request/".$course->id ?>'>
+              @csrf
+              <select class="form-control" name="class" data-toggle="select">
+                @foreach($course->groups as $group)
+                <option value="{{$group->id}}" >{{$group->name}}</option>
+                @endforeach
               </select>
               <br>
               <button class="btn btn-primary" type="submit">Go</button>
