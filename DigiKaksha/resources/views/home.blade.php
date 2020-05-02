@@ -740,7 +740,7 @@
                           </div>
                           <div class="col ml--2">
                               <h4 class="mb-0">
-                              <a href="#!">{{$group->name}}</a>
+                              <a href="/groups/{{$group->id}}">{{$group->name}}</a>
                               </h4>
                               <span class="text-success">●</span>
                               <small>Online</small>
@@ -764,7 +764,7 @@
                           </div>
                           <div class="col ml--2">
                               <h4 class="mb-0">
-                              <a href="#!">{{$course->course_code}}: {{$group->name}}</a>
+                              <a href="/groups/{{$group->id}}">{{$course->course_code}}: {{$group->name}}</a>
                               </h4>
                               <span class="text-success">●</span>
                               <small>Online</small>
@@ -829,7 +829,7 @@
                             </a>
                           </div>
                           <div class="col">
-                          <h5>{{ $course->course_code }}: {{ $course->name }}</h5>
+                          <h5><a href="/courses/{{$course->id}}">{{ $course->course_code }}: {{ $course->name }}</a></h5>
                           </div>
                         </div>
                       </li>
@@ -846,7 +846,7 @@
                           </a>
                         </div>
                         <div class="col">
-                        <h5>{{ $course->course_code }}: {{ $course->name }}</h5>
+                        <h5><a href="/courses/{{$course->id}}">{{ $course->course_code }}: {{ $course->name }}</a></h5>
                         </div>
                       </div>
                     </li>
@@ -862,7 +862,7 @@
                           </a>
                         </div>
                         <div class="col">
-                        <h5>{{ $course->name }}</h5>
+                        <h5><a href="/courses/{{$course->id}}">{{ $course->name }}</a></h5>
                         </div>
                       </div>
                     </li>

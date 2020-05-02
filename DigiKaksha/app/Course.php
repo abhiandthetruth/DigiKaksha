@@ -18,6 +18,6 @@ class Course extends Model
     }
     public function announcements()
     {
-        return $this->hasMany('App\Announcement');
+        return $this->hasMany('App\Announcement')->orderBy('created_at');
     }
 }

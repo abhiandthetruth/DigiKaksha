@@ -858,7 +858,7 @@
                           </a>
                         </div>
                         <div class="col">
-                          <h5>{{$group->name}}</h5>
+                        <h5><a href="/groups/{{$group->id}}">{{$group->name}}</a></h5>
                         </div>
                       </div>
                     </li>
@@ -1004,6 +1004,74 @@
           </div>
         </div>
       @endif
+      <div class="card-header">
+        <h3 class="mb-0">Announcements</h3>
+      </div>
+      <div class="table-responsive">
+        <table class="table align-items-center table-flush">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col" class="sort" data-sort="name">Title</th>
+              <th scope="col" class="sort" data-sort="budget">Time</th>
+              <th scope="col" class="sort" data-sort="status">Body</th>
+              <th scope="col" class="sort" data-sort="completion">Made by</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody class="list">
+              @foreach($course->announcements as $announcement)
+                  <tr>
+                      <th scope="row">
+                        <div class="media align-items-center">
+                          <a href="#" class="avatar rounded-circle mr-3">
+                            <img alt="Image placeholder" src="../../assets/img/theme/sketch.jpg">
+                          </a>
+                          <div class="media-body">
+                            <span class="name mb-0 text-sm"><a>{{$announcement->title}}</a></span>
+                          </div>
+                        </div>
+                      </th>
+                      <td class="budget">
+                        {{$announcement->created_at}}
+                      </td>
+                      <td>
+                        <span class="badge badge-dot mr-4">
+                          @if($announcement->graded==1)
+                            <i class="bg-warning"></i>
+                          @else
+                            <i class="bg-info"></i>
+                          @endif
+                          @if(strlen($announcement->body)>20)
+                          <span class="status">{{substr($announcement->body,0,20)}}...</span>
+                          @else
+                          <span class="status">{{$announcement->body}}</span>
+                          @endif
+                        </span>
+                      </td>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <span class="completion mr-2">{{$announcement->created_at}}</span>
+                        </div>
+                      </td>
+                      <td class="text-right">
+                      @if($announcement->graded==1 and Auth::user()->user_level==1)
+                        <div class="dropdown">
+                          <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                          </a>
+                          
+                              <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                  <a class="dropdown-item" href="">Add Submission</a>
+                              </div>
+                        </div>
+                      @endif
+                      </td>
+                    </tr> 
+              @endforeach
+          </tbody>
+        </table>
+      </div>
+    </div>
       <!-- Footer -->
       <footer class="footer pt-0">
         <div class="row align-items-center justify-content-lg-between">
