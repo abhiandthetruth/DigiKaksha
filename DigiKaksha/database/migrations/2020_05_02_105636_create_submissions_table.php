@@ -16,6 +16,13 @@ class CreateSubmissionsTable extends Migration
         Schema::create('submissions', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->integer('grade')->nullable();
+            $table->mediumText('comment')->nullable();
+            $table->mediumText('body');
+            $table->string('file')->nullable();
+            $table->string('checker')->nullable();
+            $table->integer('user_id');
+            $table->integer('announcement_id');
         });
     }
 

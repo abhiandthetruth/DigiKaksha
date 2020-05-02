@@ -13,5 +13,9 @@ class Announcement extends Model
     public function course()
     {
         return $this->belongsTo('App\Course');
-    } 
+    }
+    public function submissions()
+    {
+        return $this->hasMany('App\Announcement');
+    }
 }
