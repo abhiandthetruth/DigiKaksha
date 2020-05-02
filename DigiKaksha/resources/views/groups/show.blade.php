@@ -360,16 +360,18 @@
               <div class="col-lg-3 order-lg-2">
               </div>
             </div>
-            <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
-              <div class="d-flex justify-content-between">
-                <a href="/groups/{{$group->id}}/edit" class="btn btn-sm btn-info  mr-4 ">Edit</a>
-                <form id="delete-form" action="/groups/{{$group->id}}" method="POST" style="display: none;">
-                    @csrf
-                    <input type="hidden" name="_method" value="DELETE">
-                </form>
-                <a href="javascript:{}" onclick="document.getElementById('delete-form').submit();" href="#" class="btn btn-sm btn-danger float-right">Delete</a>
+            @if(Auth::user()->user_level==3)
+              <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+                <div class="d-flex justify-content-between">
+                  <a href="/groups/{{$group->id}}/edit" class="btn btn-sm btn-info  mr-4 ">Edit</a>
+                  <form id="delete-form" action="/groups/{{$group->id}}" method="POST" style="display: none;">
+                      @csrf
+                      <input type="hidden" name="_method" value="DELETE">
+                  </form>
+                  <a href="javascript:{}" onclick="document.getElementById('delete-form').submit();" href="#" class="btn btn-sm btn-danger float-right">Delete</a>
+                </div>
               </div>
-            </div>
+            @endif
             <div class="card-body pt-0">
               <div class="row">
                 <div class="col">

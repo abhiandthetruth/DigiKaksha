@@ -86,7 +86,7 @@ class GroupsController extends Controller
      */
     public function show($id)
     {
-        if(auth()->user()->user_level < 3) return redirect('home');
+        if(auth()->user()->user_level < 1) return redirect('home');
         $group = Group::find($id);
         return view('groups/show')->with('group', $group);
     }
