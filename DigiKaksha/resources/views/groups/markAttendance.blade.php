@@ -12,7 +12,7 @@
 <html>
 
 
-<!-- Mirrored from demos.creative-tim.com/argon-dashboard-pro/pages/examples/profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Apr 2020 20:03:28 GMT -->
+<!-- Mirrored from demos.creative-tim.com/argon-dashboard-pro/pages/tables/tables.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Apr 2020 20:04:21 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
   <meta charset="utf-8">
@@ -132,43 +132,43 @@
               <div class="collapse" id="navbar-examples">
                 <ul class="nav nav-sm flex-column">
                   <li class="nav-item">
-                    <a href="pricing.html" class="nav-link">
+                    <a href="../examples/pricing.html" class="nav-link">
                       <span class="sidenav-mini-icon"> P </span>
                       <span class="sidenav-normal"> Pricing </span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="login.html" class="nav-link">
+                    <a href="../examples/login.html" class="nav-link">
                       <span class="sidenav-mini-icon"> L </span>
                       <span class="sidenav-normal"> Login </span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="register.html" class="nav-link">
+                    <a href="../examples/register.html" class="nav-link">
                       <span class="sidenav-mini-icon"> R </span>
                       <span class="sidenav-normal"> Register </span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="lock.html" class="nav-link">
+                    <a href="../examples/lock.html" class="nav-link">
                       <span class="sidenav-mini-icon"> L </span>
                       <span class="sidenav-normal"> Lock </span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="timeline.html" class="nav-link">
+                    <a href="../examples/timeline.html" class="nav-link">
                       <span class="sidenav-mini-icon"> T </span>
                       <span class="sidenav-normal"> Timeline </span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="profile.html" class="nav-link">
+                    <a href="../examples/profile.html" class="nav-link">
                       <span class="sidenav-mini-icon"> P </span>
                       <span class="sidenav-normal"> Profile </span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="rtl-support.html" class="nav-link">
+                    <a href="../examples/rtl-support.html" class="nav-link">
                       <span class="sidenav-mini-icon"> RP </span>
                       <span class="sidenav-normal"> RTL Support </span>
                     </a>
@@ -270,26 +270,26 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#navbar-tables" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-tables">
+              <a class="nav-link active" href="#navbar-tables" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-tables">
                 <i class="ni ni-align-left-2 text-default"></i>
-                <span class="nav-link-text">Tables</span>
+                <span class="nav-link-text">Classes</span>
               </a>
-              <div class="collapse" id="navbar-tables">
+              <div class="collapse show" id="navbar-tables">
                 <ul class="nav nav-sm flex-column">
                   <li class="nav-item">
-                    <a href="../tables/tables.html" class="nav-link">
+                    <a href="tables.html" class="nav-link">
                       <span class="sidenav-mini-icon"> T </span>
                       <span class="sidenav-normal"> Tables </span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="../tables/sortable.html" class="nav-link">
+                    <a href="sortable.html" class="nav-link">
                       <span class="sidenav-mini-icon"> S </span>
                       <span class="sidenav-normal"> Sortable </span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="../tables/datatables.html" class="nav-link">
+                    <a href="datatables.html" class="nav-link">
                       <span class="sidenav-mini-icon"> D </span>
                       <span class="sidenav-normal"> Datatables </span>
                     </a>
@@ -379,7 +379,7 @@
   <!-- Main content -->
   <div class="main-content" id="panel">
     <!-- Topnav -->
-    <nav class="navbar navbar-top navbar-expand navbar-dark bg-default border-bottom">
+    <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- Search form -->
@@ -569,441 +569,271 @@
                 </div>
               </div>
             </li>
-          </ul>
-          <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
-            <li class="nav-item dropdown">
-              <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <div class="media align-items-center">
-                  <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="../../assets/img/theme/team-4.jpg">
-                  </span>
-                  <div class="media-body  ml-2  d-none d-lg-block">
-                    <span class="mb-0 text-sm  font-weight-bold"> {{ Auth::user()->name }} </span>
+            <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
+                <li class="nav-item dropdown">
+                  <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="media align-items-center">
+                      <span class="avatar avatar-sm rounded-circle">
+                        <img alt="Image placeholder" src="../../assets/img/theme/team-4.jpg">
+                      </span>
+                      <div class="media-body  ml-2  d-none d-lg-block">
+                        <span class="mb-0 text-sm  font-weight-bold"> {{ Auth::user()->name }} </span>
+                      </div>
+                    </div>
+                  </a>
+                  <div class="dropdown-menu  dropdown-menu-right ">
+                    <div class="dropdown-header noti-title">
+                      <h6 class="text-overflow m-0">Welcome!</h6>
+                    </div>
+                    <a href="#!" class="dropdown-item">
+                      <i class="ni ni-single-02"></i>
+                      <span>My profile</span>
+                    </a>
+                    <a href="#!" class="dropdown-item">
+                      <i class="ni ni-settings-gear-65"></i>
+                      <span>Settings</span>
+                    </a>
+                    <a href="#!" class="dropdown-item">
+                      <i class="ni ni-calendar-grid-58"></i>
+                      <span>Activity</span>
+                    </a>
+                    <a href="#!" class="dropdown-item">
+                      <i class="ni ni-support-16"></i>
+                      <span>Support</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a  class="dropdown-item">
+                      <i class="ni ni-user-run"></i>
+                      <span href="{{ route('logout') }}"
+                      onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">Logout</span>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                   </div>
-                </div>
-              </a>
-              <div class="dropdown-menu  dropdown-menu-right ">
-                <div class="dropdown-header noti-title">
-                  <h6 class="text-overflow m-0">Welcome!</h6>
-                </div>
-                <a href="#!" class="dropdown-item">
-                  <i class="ni ni-single-02"></i>
-                  <span>My profile</span>
-                </a>
-                <a href="#!" class="dropdown-item">
-                  <i class="ni ni-settings-gear-65"></i>
-                  <span>Settings</span>
-                </a>
-                <a href="#!" class="dropdown-item">
-                  <i class="ni ni-calendar-grid-58"></i>
-                  <span>Activity</span>
-                </a>
-                <a href="#!" class="dropdown-item">
-                  <i class="ni ni-support-16"></i>
-                  <span>Support</span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a  class="dropdown-item">
-                  <i class="ni ni-user-run"></i>
-                  <span href="{{ route('logout') }}"
-                  onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">Logout</span>
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-              </div>
-            </li>
-          </ul>
+                </li>
+              </ul>
         </div>
       </div>
     </nav>
     <!-- Header -->
     <!-- Header -->
-    <div class="header pb-6 d-flex align-items-center" style="min-height: 500px; background-image: url(../../assets/img/theme/img-1-1000x600.jpg); background-size: cover; background-position: center top;">
-      <!-- Mask -->
-      <span class="mask bg-gradient-default opacity-8"></span>
-      <!-- Header container -->
-      <div class="container-fluid d-flex align-items-center">
-        <div class="row">
-          <div class="col-lg-7 col-md-10">
-          <h1 class="display-2 text-white">{{$course->name}}</h1>
-            <p class="text-white mt-0 mb-5">This is the showcase page for the course {{$course->name}}. You can see all the course related information here.</p>
-            @if(Auth::user()->user_level==3)
-                <a href="/courses/{{$course->id}}/edit" class="btn btn-neutral">Edit Course</a>
-            @endif
-            @foreach($course->users as $user)
-              @if(Auth::user()->id == $user->id or Auth::user()->user_level==3)
-                <a href="/announcements/create?course={{$course->id}}" class="btn btn-info">Make Announcement</a> 
-                @break
-              @endif
-            @endforeach
-         </div>
+    <div class="header bg-primary pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0">Mark Attendance</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                  <li class="breadcrumb-item"><a href="/home">Dashboard</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Course /Attendance</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="col-lg-6 col-5 text-right">
+              <a href="/groups/create" class="btn btn-sm btn-neutral">New</a>
+              <a href="#" class="btn btn-sm btn-neutral">Filters</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <!-- Page content -->
+    
     <div class="container-fluid mt--6">
       <div class="row">
-        <div class="col-xl-4 order-xl-2">
-          <div class="card card-profile">
-            <img src="../../assets/img/theme/img-1-1000x600.jpg" alt="Image placeholder" class="card-img-top">
-            <div class="row justify-content-center">
-              <div class="col-lg-3 order-lg-2">
-              </div>
-            </div>
-            <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
-              <div class="d-flex justify-content-between">
-                @if(Auth::user()->user_level==3)
-                <a href="/courses/{{$course->id}}/edit" class="btn btn-sm btn-info  mr-4 ">Edit</a>
-                @endif
-
-                <form id="delete-form" action="/courses/{{$course->id}}" method="POST" style="display: none;">
-                    @csrf
-                   
-                    <input type="hidden" name="_method" value="DELETE">
-                 
-                </form>
-                 @if(Auth::user()->user_level==3)
-                <a href="javascript:{}" onclick="document.getElementById('delete-form').submit();" href="#" class="btn btn-sm btn-danger float-right">Delete</a>
-                @endif
-              </div> <input type="hidden" name="_method" value="DELETE">
-            </div>
-            <div class="card-body pt-0">
-              <div class="row">
-                <div class="col">
-                  <div class="card-profile-stats d-flex justify-content-center">
-                    <div>
-                    <span class="heading">{{$course->course_code}}</span>
-                      <span class="description">Course ID</span>
+        <div class="col">
+            <div class="card">
+                <!-- Card header -->
+                <div class="card-header border-0">
+                  <div class="row">
+                    <div class="col-6">
+                      <h3 class="mb-0">Marking attendance for Class X</h3>
                     </div>
-                    <div>
-                      <span class="heading">{{count($course->groups)}}</span>
-                      <span class="description">Classes</span>
-                    </div>
-                    <div>
-                    <span class="heading">{{count($course->users)}}</span>
-                      <span class="description">Instructors</span>
+                    <div class="col-6 text-right">
+                        <input class="form-control" type="datetime-local" value="2018-11-23T10:30:00" id="example-datetime-local-input">
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="text-center">
-                <h5 class="h3">
-                 {{$course->name}}<span class="font-weight-light"></span>
-                </h5>
-                <div class="h5 font-weight-300">
-                  <i class="ni location_pin mr-2"></i>{{$course->semester}}
+                <!-- Light table -->
+                <div class="table-responsive">
+                  <table class="table align-items-center table-flush table-hover">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>
+                          <div class="custom-control custom-checkbox">
+                            <input class="custom-control-input" id="table-check-all" type="checkbox">
+                            <label class="custom-control-label" for="table-check-all"></label>
+                          </div>
+                        </th>
+                        <th>Name</th>
+                        <th>Roll Number</th>
+                        <th>Later Note</th>
+                        <th>Present</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-">
+                            <th>
+                              <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" id="table-check-all" type="checkbox">
+                                <label class="custom-control-label" for="table-check-all"></label>
+                              </div>
+                            </th>
+                            <td class="table-user">
+                              <b>Alex Smith</b>
+                            </td>
+                            <td>
+                              <span class="text-muted">IIT2018040</span>
+                            </td>
+                            <td>
+                                <input class="form-control" type="text" value="None" id="example-text-input">
+                            </td>
+                            <td>
+                              <label class="custom-toggle">
+                                <input type="checkbox">
+                                <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Yes"></span>
+                              </label>
+                            </td>
+                          </tr>
+                          <tr class="table-">
+                            <th>
+                              <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" id="table-check-all" type="checkbox">
+                                <label class="custom-control-label" for="table-check-all"></label>
+                              </div>
+                            </th>
+                            <td class="table-user">
+                              <b>Alex Smith</b>
+                            </td>
+                            <td>
+                              <span class="text-muted">IIT2018040</span>
+                            </td>
+                            <td>
+                                <input class="form-control" type="text" value="None" id="example-text-input">
+                            </td>
+                            <td>
+                              <label class="custom-toggle">
+                                <input type="checkbox">
+                                <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Yes"></span>
+                              </label>
+                            </td>
+                          </tr>
+                          <tr class="table-">
+                            <th>
+                              <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" id="table-check-all" type="checkbox">
+                                <label class="custom-control-label" for="table-check-all"></label>
+                              </div>
+                            </th>
+                            <td class="table-user">
+                              <b>Alex Smith</b>
+                            </td>
+                            <td>
+                              <span class="text-muted">IIT2018040</span>
+                            </td>
+                            <td>
+                                <input class="form-control" type="text" value="None" id="example-text-input">
+                            </td>
+                            <td>
+                              <label class="custom-toggle">
+                                <input type="checkbox">
+                                <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Yes"></span>
+                              </label>
+                            </td>
+                          </tr>
+                          <tr class="table-">
+                            <th>
+                              <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" id="table-check-all" type="checkbox">
+                                <label class="custom-control-label" for="table-check-all"></label>
+                              </div>
+                            </th>
+                            <td class="table-user">
+                              <b>Alex Smith</b>
+                            </td>
+                            <td>
+                              <span class="text-muted">IIT2018040</span>
+                            </td>
+                            <td>
+                                <input class="form-control" type="text" value="None" id="example-text-input">
+                            </td>
+                            <td>
+                              <label class="custom-toggle">
+                                <input type="checkbox">
+                                <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Yes"></span>
+                              </label>
+                            </td>
+                          </tr>
+                          <tr class="table-">
+                            <th>
+                              <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" id="table-check-all" type="checkbox">
+                                <label class="custom-control-label" for="table-check-all"></label>
+                              </div>
+                            </th>
+                            <td class="table-user">
+                              <b>Alex Smith</b>
+                            </td>
+                            <td>
+                              <span class="text-muted">IIT2018040</span>
+                            </td>
+                            <td>
+                                <input class="form-control" type="text" value="None" id="example-text-input">
+                            </td>
+                            <td>
+                              <label class="custom-toggle">
+                                <input type="checkbox">
+                                <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Yes"></span>
+                              </label>
+                            </td>
+                          </tr>
+                          <tr class="table-">
+                            <th>
+                              <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" id="table-check-all" type="checkbox">
+                                <label class="custom-control-label" for="table-check-all"></label>
+                              </div>
+                            </th>
+                            <td class="table-user">
+                              <b>Alex Smith</b>
+                            </td>
+                            <td>
+                              <span class="text-muted">IIT2018040</span>
+                            </td>
+                            <td>
+                                <input class="form-control" type="text" value="None" id="example-text-input">
+                            </td>
+                            <td>
+                              <label class="custom-toggle">
+                                <input type="checkbox">
+                                <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Yes"></span>
+                              </label>
+                            </td>
+                          </tr>
+                          
+                    </tbody>
+                  </table>
                 </div>
-                <div class="h5 mt-4">
-                  <i class="ni business_briefcase-24 mr-2"></i>
-                </div>
-                <div>
-                  <i class="ni education_hat mr-2"></i>IIIT Allahabad
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Progress track -->
-          <div class="card">
-            <!-- Card header -->
-            <div class="card-header">
-              <!-- Title -->
-              <h5 class="h3 mb-0">Instructors</h5>
-            </div>
-            <!-- Card body -->
-            <div class="card-body">
-              <!-- List group -->
-              <ul class="list-group list-group-flush list my--3">
-                  @foreach ($course->users as $instructor)
-                  <li class="list-group-item px-0">
-                    <div class="row align-items-center">
-                      <div class="col-auto">
-                        <!-- Avatar -->
-                        <a href="#" class="avatar rounded-circle">
-                          <img alt="Image placeholder" src="../../assets/img/theme/bootstrap.jpg">
+                <div class="card-header border-0">
+                    <div class="row">
+                      <div class="col-6">
+                        <h3 class="mb-0"></h3>
+                      </div>
+                      <div class="col-6 text-right">
+                        <a href="#" class="btn btn-sm btn-success btn-round btn-icon" data-toggle="tooltip" data-original-title="Edit product">
+                          <span class="btn-inner--icon"><i class="fas fa-check"></i></span>
+                          <span class="btn-inner--text">Submit</span>
                         </a>
                       </div>
-                      <div class="col">
-                        <h5>{{$instructor->name}}</h5>
-                      </div>
-                    </div>
-                  </li>
-                  @endforeach
-              </ul>
-            </div>
+               
+            <!-- Card footer -->
           </div>
         </div>
-        <div class="col-xl-8 order-xl-1">
-          @if(Auth::user()->user_level==1)
-          <div class="row">   
-            <div class="col-lg-6">
-              <div class="card bg-gradient-info border-0">
-                <!-- Card body -->
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0 text-white">Attendance</h5>
-                      <span class="h2 font-weight-bold mb-0 text-white">8/10</span>
-                    </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-white text-dark rounded-circle shadow">
-                        <i class="ni ni-active-40"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="mt-3 mb-0 text-sm">
-                    <span class="text-white mr-2">80.00%</span>
-                    <span class="text-nowrap text-light">Required 75%</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="card bg-gradient-danger border-0">
-                <!-- Card body -->
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0 text-white">Grades</h5>
-                      <span class="h2 font-weight-bold mb-0 text-white">8.00/10</span>
-                    </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-white text-dark rounded-circle shadow">
-                        <i class="ni ni-spaceship"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="mt-3 mb-0 text-sm">
-                    <span class="text-white mr-2">Based on 10 tests
-                    <span class="text-nowrap text-light">4.00 minimum required</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            @else
-            <div class="row">   
-              <div class="col-lg-6">
-                <div class="card bg-gradient-info border-0">
-                  <!-- Card body -->
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col">
-                        <h5 class="card-title text-uppercase text-muted mb-0 text-white">Average Attendance</h5>
-                        <span class="h2 font-weight-bold mb-0 text-white">8/10</span>
-                      </div>
-                      <div class="col-auto">
-                        <div class="icon icon-shape bg-white text-dark rounded-circle shadow">
-                          <i class="ni ni-active-40"></i>
-                        </div>
-                      </div>
-                    </div>
-                    <p class="mt-3 mb-0 text-sm">
-                      <span class="text-white mr-2">80.00%</span>
-                      <span class="text-nowrap text-light">Required 75%</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="card bg-gradient-danger border-0">
-                  <!-- Card body -->
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col">
-                        <h5 class="card-title text-uppercase text-muted mb-0 text-white">Average Grades</h5>
-                        <span class="h2 font-weight-bold mb-0 text-white">8.00/10</span>
-                      </div>
-                      <div class="col-auto">
-                        <div class="icon icon-shape bg-white text-dark rounded-circle shadow">
-                          <i class="ni ni-spaceship"></i>
-                        </div>
-                      </div>
-                    </div>
-                    <p class="mt-3 mb-0 text-sm">
-                      <span class="text-white mr-2">Based on 10 tests
-                      <span class="text-nowrap text-light">4.00 minimum required</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            @endif
-
-          </div>
-          @if (session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-          <div class="card">
-            <div class="card-header">
-              <div class="row align-items-center">
-                <div class="col-8">
-                  <h3 class="mb-0">Classes </h3>
-                </div>
-                <div class="col-4 text-right">
-                  <a href="#!" class="btn btn-sm btn-primary">Settings</a>
-                </div>
-              </div>
-            </div>
-            <div class="card-body">
-                <ul class="list-group list-group-flush list my--3">
-                    @foreach ($course->groups as $group)
-                    <li class="list-group-item px-0">
-                      <div class="row align-items-center">
-                        <div class="col-auto">
-                          <!-- Avatar -->
-                          <a href="#" class="avatar rounded-circle">
-                            <img alt="Image placeholder" src="../../assets/img/theme/bootstrap.jpg">
-                          </a>
-                        </div>
-                        <div class="col">
-                          <h5>{{$group->name}}</h5>
-                        </div>
-                      </div>
-                    </li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-        @if(Auth::user()->user_level==1)
-        <div class="card">
-          <!-- Card header -->
-          <div class="card-header border-0">
-            <div class="row">
-              <div class="col-6">
-                <h3 class="mb-0">Attendance Report</h3>
-              </div>
-              <div class="col-6 text-right">
-                <a href="#" class="btn btn-sm btn-danger btn-round btn-icon" data-toggle="tooltip" data-original-title="Report a problem to teacher">
-                  <span class="btn-inner--icon"><i class="fas fa-question"></i></span>
-                  <span class="btn-inner--text">Report a problem</span>
-                </a>
-              </div>
-            </div>
-          </div>
-          <!-- Light table -->
-          <div class="table-responsive">
-            <table class="table align-items-center table-flush table-hover">
-              <thead class="thead-light">
-                <tr>
-                  <th>
-                    <div class="custom-control custom-checkbox">
-                      <input class="custom-control-input" id="table-check-all" type="checkbox">
-                      <label class="custom-control-label" for="table-check-all"></label>
-                    </div>
-                  </th>
-                  <th>Taker</th>
-                  <th>Date</th>
-                  <th>Late Remark</th>
-                  <th>Marked as</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="table-success">
-                  <th>
-                    <div class="custom-control custom-checkbox">
-                      <input class="custom-control-input" id="table-check-all" type="checkbox">
-                      <label class="custom-control-label" for="table-check-all"></label>
-                    </div>
-                  </th>
-                  <td class="table-user">
-                    <b>abhishek</b>
-                  </td>
-                  <td>
-                    <span class="text-muted">10/09/2018</span>
-                  </td>
-                  <td>
-                    <a href="#!" class="font-weight-bold">None</a>
-                  </td>
-                  <td>
-                    Present
-                  </td>
-                </tr>
-                <tr class="table-success">
-                  <th>
-                    <div class="custom-control custom-checkbox">
-                      <input class="custom-control-input" id="table-check-all" type="checkbox">
-                      <label class="custom-control-label" for="table-check-all"></label>
-                    </div>
-                  </th>
-                  <td class="table-user">
-                    <b>abhishek</b>
-                  </td>
-                  <td>
-                    <span class="text-muted">10/09/2018</span>
-                  </td>
-                  <td>
-                    <a href="#!" class="font-weight-bold">15 mins late</a>
-                  </td>
-                  <td>
-                    Present
-                  </td>
-                </tr>
-                <tr class="table-warning">
-                  <th>
-                    <div class="custom-control custom-checkbox">
-                      <input class="custom-control-input" id="table-check-all" type="checkbox">
-                      <label class="custom-control-label" for="table-check-all"></label>
-                    </div>
-                  </th>
-                  <td class="table-user">
-                    <b>abhishek</b>
-                  </td>
-                  <td>
-                    <span class="text-muted">10/09/2018</span>
-                  </td>
-                  <td>
-                    <a href="#!" class="font-weight-bold">None</a>
-                  </td>
-                  <td>
-                    Absent
-                  </td>
-                </tr>
-                <tr class="table-success">
-                  <th>
-                    <div class="custom-control custom-checkbox">
-                      <input class="custom-control-input" id="table-check-all" type="checkbox">
-                      <label class="custom-control-label" for="table-check-all"></label>
-                    </div>
-                  </th>
-                  <td class="table-user">
-                    <b>abhishek</b>
-                  </td>
-                  <td>
-                    <span class="text-muted">10/09/2018</span>
-                  </td>
-                  <td>
-                    <a href="#!" class="font-weight-bold">None</a>
-                  </td>
-                  <td>
-                    Present
-                  </td>
-                </tr> 
-              </tbody>
-            </table>
-          </div>
-        </div>
-        @endif
-        @if(Auth::user()->user_level!=1)
-        <div class="card">
-          <!-- Card header -->
-          <div class="card-header">
-            <h3 class="mb-0">Mark Attendance</h3>
-          </div>
-          <!-- Card body -->
-          <div class="card-body">
-            <form>
-              <select class="form-control" data-toggle="select">
-                <option>Section A</option>
-                <option>Section B</option>
-              </select>
-              <br>
-              <button class="btn btn-primary" type="submit">Go</button>
-            </form>
-          </div>
-        </div>
-      @endif
+      </div>
       <!-- Footer -->
       <footer class="footer pt-0">
         <div class="row align-items-center justify-content-lg-between">
@@ -1076,7 +906,5 @@
     <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=111649226022273&amp;ev=PageView&amp;noscript=1" />
   </noscript>
 </body>
-
-
-<!-- Mirrored from demos.creative-tim.com/argon-dashboard-pro/pages/examples/profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Apr 2020 20:03:30 GMT -->
+<!-- Mirrored from demos.creative-tim.com/argon-dashboard-pro/pages/tables/tables.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Apr 2020 20:04:21 GMT -->
 </html>
