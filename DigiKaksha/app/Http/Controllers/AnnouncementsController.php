@@ -25,17 +25,11 @@ class AnnouncementsController extends Controller
     {
         if(auth()->user()->user_level < 2) return redirect('home');
         $course = Course::find(\Request::get('course'));
-        $flag = false;
-        foreach($course->users as $user) {
-            if($user->id==auth()->user()->id or auth()->user()->user_level == 3){
-                $flag = true;
-                break;
-            }
-        }
-        if(!$flag) return redirect('home');
+        if(!$this->checkEditAccess($course)) return redirect('home');
         return view('announcements/create')->with('course', $course);
     }
 
+   
     /**
      * Store a newly created resource in storage.
      *
@@ -65,7 +59,10 @@ class AnnouncementsController extends Controller
      */
     public function show($id)
     {
-        //
+        if(auth()->user()->user_level < 1) return redirect('home');
+        $announcement = Announcement::find($id);
+        if(!($this->checkViewAccess($announcement->course) or $this->checkEditAccess($announcement->course))) return redirect('home');
+        return view('announcements/show')->with('announcement', $announcement);
     }
 
     /**
@@ -100,5 +97,32 @@ class AnnouncementsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    //helper functions
+    public function checkEditAccess($course)
+    {
+        $flag = false;
+        foreach($course->users as $user) {
+            if($user->id==auth()->user()->id or auth()->user()->user_level == 3){
+                $flag = true;
+                break;
+            }
+        }
+        return $flag;
+    }
+
+    public function checkViewAccess($course)
+    {
+        $flag = false;
+        foreach(auth()->user()->groups as $group) {
+            foreach($group->courses as $course1){
+                if($course1->id==$course->id){
+                    $flag = true;
+                    break;
+                }
+            }
+        }
+        return $flag;
     }
 }

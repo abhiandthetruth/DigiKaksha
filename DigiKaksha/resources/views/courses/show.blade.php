@@ -1013,7 +1013,6 @@
             <tr>
               <th scope="col" class="sort" data-sort="name">Title</th>
               <th scope="col" class="sort" data-sort="budget">Time</th>
-              <th scope="col" class="sort" data-sort="status">Body</th>
               <th scope="col" class="sort" data-sort="completion">Made by</th>
               <th scope="col"></th>
             </tr>
@@ -1027,7 +1026,7 @@
                             <img alt="Image placeholder" src="../../assets/img/theme/sketch.jpg">
                           </a>
                           <div class="media-body">
-                            <span class="name mb-0 text-sm"><a>{{$announcement->title}}</a></span>
+                            <span class="name mb-0 text-sm"><a href="/announcements/{{$announcement->id}}">{{$announcement->title}}</a></span>
                           </div>
                         </div>
                       </th>
@@ -1035,22 +1034,8 @@
                         {{$announcement->created_at}}
                       </td>
                       <td>
-                        <span class="badge badge-dot mr-4">
-                          @if($announcement->graded==1)
-                            <i class="bg-warning"></i>
-                          @else
-                            <i class="bg-info"></i>
-                          @endif
-                          @if(strlen($announcement->body)>20)
-                          <span class="status">{{substr($announcement->body,0,20)}}...</span>
-                          @else
-                          <span class="status">{{$announcement->body}}</span>
-                          @endif
-                        </span>
-                      </td>
-                      <td>
                         <div class="d-flex align-items-center">
-                          <span class="completion mr-2">{{$announcement->created_at}}</span>
+                          <span class="completion mr-2">{{$announcement->user->name}}</span>
                         </div>
                       </td>
                       <td class="text-right">
