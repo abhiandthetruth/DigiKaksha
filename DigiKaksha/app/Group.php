@@ -18,4 +18,20 @@ class Group extends Model
     public function __toString() {
         return $this->group_code;
     }
+    public function getAverageMarks(){
+        $i=0;
+        $j=0;
+        foreach($this->users as $user){
+            $i+=$user->averageMarks();
+            $j++;
+        }
+        return $i/$j;
+    }
+    public function getTotalEvaluations(){
+        $i=0;
+        foreach($this->courses as $course){
+            $i+=$course->evaluationNo();
+        }
+        return $i;
+    }
 }

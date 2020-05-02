@@ -96,8 +96,11 @@ class User extends Authenticatable
                 }
             }
         }
-        $r = $i*100/$j;
-        return $r;
+        if($j!=0){
+            $r = $i*100/$j;
+            return $r;
+        }
+        else return 100;
     }
     public function getTotalClasses()
     {

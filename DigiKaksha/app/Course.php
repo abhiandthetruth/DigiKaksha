@@ -20,4 +20,9 @@ class Course extends Model
     {
         return $this->hasMany('App\Announcement')->orderBy('created_at', 'desc');
     }
+    public function evaluationNo(){
+        $i=0;
+        foreach($this->announcements as $announcement) if($announcement->graded==1) $i+=1;
+        return $i;
+    }
 }
