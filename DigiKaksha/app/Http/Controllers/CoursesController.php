@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Group;
 use App\Course;
+use App\attendance;
 use Illuminate\Http\Request;
 
 class CoursesController extends Controller
@@ -96,7 +97,46 @@ class CoursesController extends Controller
     public function show($id)
     {
         $course = Course::find($id);
+        if(auth()->user()->user_level > 1){
         return view('courses/show')->with('course', $course);
+        }
+        else{
+            $classId = 0; 
+            $flag=0;
+            $groups= auth()->user()->groups;
+            foreach($groups as $group){
+                if($flag==1)
+                 break;
+              foreach($group->courses as $co)
+              {
+                           if($co->id == $id){
+                           $classId = $group->id;
+                           $flag=1;
+                           break;
+                           }
+               }
+            }
+            $roll=auth()->user()->roll_no;
+            $attendances = attendance::where('course_id', $id)->where('group_id',$classId)->get();
+            $markedAttendances = [];
+            $present =0;
+            $total=0;
+            foreach($attendances as $att){
+                $total++;
+               $thisAtt = new \stdClass;
+               $thisAtt->date = $att->date;
+               $thisAtt->taker= $att->taker;
+               $presentStudents = explode(" ", $att->present);
+               if(array_search($roll,$presentStudents) === false){     
+                       $thisAtt->present = false;
+               }else{
+                       $present++;
+                       $thisAtt->present = true;
+               }
+               array_push($markedAttendances,$thisAtt);
+            }
+            return view('courses/show',compact('course','markedAttendances','present','total'));
+        }
     }
 
     /**
