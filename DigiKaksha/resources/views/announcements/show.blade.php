@@ -68,6 +68,7 @@
                                         <tr>
                                           <th scope="col" class="sort" data-sort="name">Roll No</th>
                                           <th scope="col" class="sort" data-sort="budget">Name</th>
+                                          <th scope="col" class="sort" data-sort="budget">Current Grade</th>
                                           <th scope="col" class="sort" data-sort="completion"></th>
                                         </tr>
                                       </thead>
@@ -84,6 +85,9 @@
                                                   <td class="budget">
                                                     {{$submission->user->name}}
                                                   </td>
+                                                  <td class="budget">
+                                                    {{$submission->grade}}
+                                                  </td>
                                                   <td>
                                                     <div class="d-flex align-items-center">
                                                         <a href="/submissions/{{$submission->id}}/edit" class="btn btn-sm btn-primary">View Submission</a>
@@ -98,7 +102,48 @@
                         @else
                             @foreach(Auth::user()->courses as $course)
                                 @if($course->id==$announcement->course->id)
-                                    <a href="#!" class="btn btn-sm btn-primary">View Submissions</a>
+                                <div class="card-header">
+                                    Submissions
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table align-items-center table-flush">
+                                          <thead class="thead-light">
+                                            <tr>
+                                              <th scope="col" class="sort" data-sort="name">Roll No</th>
+                                              <th scope="col" class="sort" data-sort="budget">Name</th>
+                                              <th scope="col" class="sort" data-sort="budget">Current Grade</th>
+                                              <th scope="col" class="sort" data-sort="completion"></th>
+                                            </tr>
+                                          </thead>
+                                          <tbody class="list">
+                                              @foreach($announcement->submissions as $submission)
+                                                  <tr>
+                                                      <th scope="row">
+                                                        <div class="media align-items-center">
+                                                          <div class="media-body">
+                                                            <span class="name mb-0 text-sm"><a>{{$submission->user->roll_no}}</a></span>
+                                                          </div>
+                                                        </div>
+                                                      </th>
+                                                      <td class="budget">
+                                                        {{$submission->user->name}}
+                                                      </td>
+                                                      <td class="budget">
+                                                        {{$submission->grade}}
+                                                      </td>
+                                                      <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <a href="/submissions/{{$submission->id}}/edit" class="btn btn-sm btn-primary">View Submission</a>
+                                                        </div>
+                                                      </td>
+                                                    </tr> 
+                                              @endforeach
+                                          </tbody>
+                                        </table>
+                                      </div> 
+                                </div>
+                                </div>
                                     @break
                                 @endif
                             @endforeach

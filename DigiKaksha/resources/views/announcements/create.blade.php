@@ -34,7 +34,7 @@
                             <label for="body" class="col-md-4 col-form-label text-md-right">{{ __('Body') }}</label>
 
                             <div class="col-md-8">
-                                <textarea id="body" style="height:200px" type="text" class="form-control @error('body') is-invalid @enderror" name="body" value="{{ old('body') }}" required autocomplete="body"></textarea>
+                                <textarea id="body" style="height:150px" type="text" class="form-control @error('body') is-invalid @enderror" name="body" value="{{ old('body') }}" required autocomplete="body"></textarea>
 
                                 @error('body')
                                     <span class="invalid-feedback" role="alert">
@@ -64,7 +64,32 @@
                                 <span class="custom-toggle-slider rounded-circle"></span>
                             </label>
                         </div>
-                        
+                        <div class="form-group row">
+                            <label for="max_grade" class="col-md-4 col-form-label text-md-right">{{ __('Max Grade(If Graded)') }}</label>
+
+                            <div class="col-md-8">
+                                <input id="max_grade" type="number" class="form-control @error('max_grade') is-invalid @enderror" name="max_grade" value="{{ old('max_grade') }}" required autocomplete="max_grade" autofocus>
+
+                                @error('max_grade')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="component" class="col-md-4 col-form-label text-md-right">{{ __('Component(If Graded)') }}</label>
+
+                            <div class="col-md-8">
+                                <input id="component" type="text" class="form-control @error('component') is-invalid @enderror" name="component" value="{{ old('component') }}" required autocomplete="component" autofocus>
+
+                                @error('component')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
                         
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

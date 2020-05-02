@@ -43,7 +43,11 @@ class AnnouncementsController extends Controller
         $announcement = new Announcement();
         $announcement->title = $request->input('title');
         $announcement->body = $request->input('body');
-        if($request->input('graded')) $announcement->graded=1;
+        if($request->input('graded')) {
+            $announcement->graded=1;
+            $announcement->max_grade = $request->input('max_grade');
+            $announcement->component = $request->input('component');
+        }
         else $announcement->graded=0;
         $announcement->user_id = auth()->user()->id;
         $announcement->course_id = $course->id;

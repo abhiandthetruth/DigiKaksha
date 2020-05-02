@@ -58,4 +58,19 @@ class User extends Authenticatable
         foreach($this->submissions as $submission) if($submission->announcement_id == $announcement->id) return true;
         return false;
     }
+    public function getScore($course){
+        $i=0;
+        foreach($this->submissions as $submission) if($submission->announcement->course_id==$course->id) $i+=$submission->grade;
+        return $i;
+    }
+    public function getMaxScore($course){
+        $i=0;
+        foreach($this->submissions as $submission) if($submission->announcement->course_id==$course->id) $i+=$submission->announcement->max_grade;
+        return $i;
+    }
+    public function evaluationNo($course){
+        $i=0;
+        foreach($this->submissions as $submission) if($submission->announcement->course_id==$course->id) if($submission->grade!=NULL)$i+=1;
+        return $i;
+    }
 }

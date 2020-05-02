@@ -744,7 +744,11 @@
                   <div class="row">
                     <div class="col">
                       <h5 class="card-title text-uppercase text-muted mb-0 text-white">Attendance</h5>
-                      <span class="h2 font-weight-bold mb-0 text-white">{{$present}}/{{$total}}</span>
+                      <span class="h2 font-weight-bold mb-0 text-white">
+                        
+                          {{$present}}/{{$total}}
+                        
+                      </span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-white text-dark rounded-circle shadow">
@@ -753,7 +757,11 @@
                     </div>
                   </div>
                   <p class="mt-3 mb-0 text-sm">
-                    <span class="text-white mr-2">{{$present*100/$total}}%</span>
+                    <span class="text-white mr-2">@if($total==0)
+                      100%
+                    @else
+                      {{$present*100/$total}}%
+                    @endif</span>
                     <span class="text-nowrap text-light">Required 75%</span>
                   </p>
                 </div>
@@ -766,7 +774,7 @@
                   <div class="row">
                     <div class="col">
                       <h5 class="card-title text-uppercase text-muted mb-0 text-white">Grades</h5>
-                      <span class="h2 font-weight-bold mb-0 text-white">8.00/10</span>
+                    <span class="h2 font-weight-bold mb-0 text-white">{{Auth::user()->getScore($course)}}/{{Auth::user()->getMaxScore($course)}}</span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-white text-dark rounded-circle shadow">
@@ -775,8 +783,8 @@
                     </div>
                   </div>
                   <p class="mt-3 mb-0 text-sm">
-                    <span class="text-white mr-2">Based on 10 tests
-                    <span class="text-nowrap text-light">4.00 minimum required</span>
+                    <span class="text-white mr-2">Based on {{Auth::user()->evaluationNo($course)}} evaluations
+                    <span class="text-nowrap text-light">25% minimum required</span>
                   </p>
                 </div>
               </div>

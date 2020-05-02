@@ -39,7 +39,7 @@
                             <label for="comment" class="col-md-2 col-form-label text-md-right">{{ __('Comment') }}</label>
 
                             <div class="col-md-8">
-                                <textarea id="comment" style="height:200px" type="text" class="form-control @error('comment') is-invalid @enderror" name="comment" value="{{ $submission->body }}" required autocomplete="comment"></textarea>
+                                <textarea id="comment" style="height:200px" type="text" class="form-control @error('comment') is-invalid @enderror" name="comment" value="" required autocomplete="comment">{{ $submission->comment }}</textarea>
 
                                 @error('comment')
                                     <span class="invalid-feedback" role="alert">
