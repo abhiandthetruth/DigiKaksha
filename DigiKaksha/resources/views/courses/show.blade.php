@@ -993,10 +993,12 @@
           </div>
           <!-- Card body -->
           <div class="card-body">
-            <form>
-              <select class="form-control" data-toggle="select">
-                <option>Section A</option>
-                <option>Section B</option>
+            <form method="post" action='<?php echo "/attendance/request/".$course->id ?>'>
+              @csrf
+              <select class="form-control" name="class" data-toggle="select">
+                @foreach($course->groups as $group)
+                <option value="{{$group->id}}" >{{$group->name}}</option>
+                @endforeach
               </select>
               <br>
               <button class="btn btn-primary" type="submit">Go</button>
