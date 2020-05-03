@@ -90,7 +90,7 @@
               <div class="pr-5">
                 <h1 class="display-2 text-white font-weight-bold mb-0">A digital world</h1>
                 <h2 class="display-4 text-white font-weight-light">Please read the below para for sample login details</h2>
-                <p class="text-white mt-4">To test the application use the following sample details,<b> Username: student/admin/teacher Password:password</b>. Different type of user have different functions.</p>
+                <p class="text-white mt-4">To test the application use the credentials provided. Different type of user have different functions.</p>
                 <div class="mt-5">
                     @if (Route::has('login'))
                 <div class="top-right links">
@@ -166,7 +166,7 @@
           <div class="col-md-8">
             <h2 class="display-3 text-white">SOE Project - Group Gamma</h3>
               <p class="lead text-white">
-           This web application is made as our software engineering project, the team Gamma(IIT2018040,43,80,95) has put a lot of efforts, this is a fully functional application which some exciting features :)
+           This web application is made as our software engineering project, the team Gamma(IIT2018040,43,80,95) has put a lot of efforts, this is a fully functional application with some exciting features :)
               </p>
           </div>
         </div>
