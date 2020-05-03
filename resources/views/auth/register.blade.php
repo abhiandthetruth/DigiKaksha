@@ -29,7 +29,7 @@
                                 @enderror
                             </div>
                         </div>
-
+                        @if($user_level==1)
                         <div class="form-group row">
                             <label for="roll_no" class="col-md-4 col-form-label text-md-right">{{ __('Roll Number') }}</label>
 
@@ -43,7 +43,21 @@
                                 @enderror
                             </div>
                         </div>
+                        @elseif($user_level==2)
+                        <div class="form-group row">
+                            <label for="roll_no" class="col-md-4 col-form-label text-md-right">{{ __('Teacher ID') }}</label>
 
+                            <div class="col-md-6">
+                                <input id="roll_no" type="text" class="form-control @error('roll_no') is-invalid @enderror" name="roll_no" value="{{ old('roll_no') }}" required autocomplete="roll_no">
+
+                                @error('roll_no')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        @endif
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
