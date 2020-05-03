@@ -396,7 +396,7 @@
                         </div>
                         <div class="col ml--2">
                             <h4 class="mb-0">
-                            <a href="#!">{{$group->name}}</a>
+                            <a href="/groups/{{$group->id}}">{{$group->name}}</a>
                             </h4>
                             <span class="text-success">●</span>
                             <small>Online</small>
