@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
-  <meta name="author" content="Creative Tim">
+  <meta name="description" content="Digitalizing Education">
+  <meta name="author" content="Gamma">
   <title>Dashboard - Digikaksha</title>
   <link rel="canonical" href="https://www.creative-tim.com/product/argon-dashboard-pro" />
   <link rel="icon" href="../../assets/img/brand/favicon.png" type="image/png">

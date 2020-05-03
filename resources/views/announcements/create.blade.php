@@ -68,7 +68,7 @@
                             <label for="max_grade" class="col-md-4 col-form-label text-md-right">{{ __('Max Grade(If Graded)') }}</label>
 
                             <div class="col-md-8">
-                                <input id="max_grade" type="number" class="form-control @error('max_grade') is-invalid @enderror" name="max_grade" value="{{ old('max_grade') }}" required autocomplete="max_grade" autofocus>
+                                <input id="max_grade" type="number" class="form-control @error('max_grade') is-invalid @enderror" name="max_grade" value="{{ old('max_grade') }}" autocomplete="max_grade" autofocus>
 
                                 @error('max_grade')
                                     <span class="invalid-feedback" role="alert">
@@ -81,7 +81,7 @@
                             <label for="component" class="col-md-4 col-form-label text-md-right">{{ __('Component(If Graded)') }}</label>
 
                             <div class="col-md-8">
-                                <input id="component" type="text" class="form-control @error('component') is-invalid @enderror" name="component" value="{{ old('component') }}" required autocomplete="component" autofocus>
+                                <input id="component" type="text" class="form-control @error('component') is-invalid @enderror" name="component" value="{{ old('component') }}" autocomplete="component" autofocus>
 
                                 @error('component')
                                     <span class="invalid-feedback" role="alert">
