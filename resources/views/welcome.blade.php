@@ -164,7 +164,7 @@
       <div class="container">
         <div class="row justify-content-center text-center">
           <div class="col-md-8">
-            <h2 class="display-3 text-white">SOE Project - Group Gamma</h3>
+            <h2 class="display-3 text-white">Mini Project - Group Gamma</h3>
               <p class="lead text-white">
            This web application is made as our software engineering project, the team Gamma(IIT2018040,43,80,95) has put a lot of efforts, this is a fully functional application with some exciting features :)
               </p>
