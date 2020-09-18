@@ -166,7 +166,7 @@
           <div class="col-md-8">
             <h2 class="display-3 text-white">Mini Project - Group Gamma</h3>
               <p class="lead text-white">
-           This web application is made as our software engineering project, the team Gamma(IIT2018040,43,80,95) has put a lot of efforts, this is a fully functional application with some exciting features :)
+           This web application is made as our mini project, the team Gamma(IIT2018040,43,80,95) has put a lot of efforts, this is a fully functional application, though being just a base, with many exciting features :)
               </p>
           </div>
         </div>
@@ -283,7 +283,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    DigiKaksha
+                    DigiKaksha <small>base</small>
                 </div>
 
                 <div class="links">
