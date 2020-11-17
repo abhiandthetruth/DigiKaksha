@@ -48,6 +48,19 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label for="quickComment" class="col-md-2 col-form-label text-md-right">{{ __('Quick Comment') }}</label>
+
+                            <div class="col-md-8">
+                                <select name="quickComment" class="form-control">
+                                    <option value="0" selected >  None </option>
+                                    @foreach (auth()->user()->comments as $item)
+                                    <option value="{{$item->id}}">  {{$item->comment}} - {{$item->percent}}% </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                         <input type="hidden" name="_method" value="put">
                         
                         {{-- <div class="dropzone dropzone-single form-group row" data-toggle="dropzone" data-dropzone-url="http://">
