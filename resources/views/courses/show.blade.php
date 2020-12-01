@@ -218,6 +218,7 @@
                 @break
               @endif
             @endforeach
+                <a href="http://127.0.0.1:3000/{{$course->course_code}}?user={{Auth::user()->email}}" class="btn btn-warning" target="_blank">Join Lecture</a>
          </div>
         </div>
       </div>
