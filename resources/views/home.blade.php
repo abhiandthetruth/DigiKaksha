@@ -482,6 +482,71 @@
        
       
         </div>
+        @if($user->user_level==2)
+        <div class="col-xl-4">
+          <div class="card">
+            <div class="card-header border-0">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h3 class="mb-0">Grading Scheme</h3>
+                </div>
+                <div class="col text-right">
+                  <a href="#!" class="btn btn-sm btn-primary">See all</a>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <!-- Projects table -->
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Comment</th>
+                    <th scope="col">Percent</th>
+                    <th scope="col">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach ($user->comments()->get() as $item)
+                  <tr>
+                    <th scope="row">
+                      {{$item->comment}}
+                    </th>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <span class="mr-2">{{$item->percent}}%</span>
+                        <div>
+                          <div class="progress">
+                            <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: {{$item->percent}}%;"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      Delete
+                    </td>
+                  </tr>
+                  @endforeach
+                  <tr>
+                    <form method="POST" action="/comments">
+                      @csrf
+                    <th scope="row">
+                      <input class="form-control" name="comment" placeholder="Comment" type="text">                             
+                    </th>
+                    <td>
+                      <input class="form-control" name="percent" placeholder="Percent" type="number">    
+                    </td>
+                    <td>
+                      <button type="submit"  class="btn btn-sm btn-primary">Add </button>
+                    </td>
+                   
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      @endif
         <div class="col-xl-4">
             <!-- Checklist -->
             <div class="card">
@@ -555,6 +620,7 @@
             </div>
           </div>
       </div>
+      
       <!-- Footer -->
       <footer class="footer pt-0">
         <div class="row align-items-center justify-content-lg-between">

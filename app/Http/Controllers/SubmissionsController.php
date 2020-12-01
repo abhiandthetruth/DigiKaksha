@@ -89,6 +89,15 @@ class SubmissionsController extends Controller
         if(auth()->user()->user_level < 2) return redirect('home');
         $submission = \App\Submission::find($id);
         if(!$this->checkEditAccess($submission->announcement->course)) return redirect('home');
+
+        if($request->quickComment!=0){
+            $comment = \App\Comment::find($request->quickComment);
+            $announcement = \App\Announcement::find($submission->announcement->id);
+            $submission->grade = ($comment->percent*$announcement->max_grade)/100;
+            $submission->comment =$comment->comment;
+            $submission->save();
+            return redirect('/announcements'.'/'.$submission->announcement->id)->with('status', 'Submission for '.$submission->user->roll_no.' graded succesfully!');
+        }
         $submission->grade = $request->input('grade');
         $submission->comment = $request->input('comment');
         $submission->save();

@@ -28,7 +28,7 @@ Route::resource('teachers', 'TeachersController');
 Route::resource('admins', 'AdminsController');
 Route::resource('announcements', 'AnnouncementsController');
 Route::resource('submissions', 'SubmissionsController');
-
+Route::resource('comments', 'CommentController');
 
 
 //Attedance routes -  Note Security aspects are not added. 
