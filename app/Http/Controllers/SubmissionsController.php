@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use GoogleCloudVision\GoogleCloudVision;
+use GoogleCloudVision\Request\AnnotateImageRequest;
 class SubmissionsController extends Controller
 {
     /**
@@ -47,6 +48,22 @@ class SubmissionsController extends Controller
         $submission = new \App\Submission();
         $submission->announcement_id = $request->input('announcement');
         $submission->body = $request->input('body');
+        if($request->hasFile('photos')){
+            $files = $request->file("photos");
+            $body = "";
+            foreach($files as $file){
+                $image = base64_encode(file_get_contents($file));
+                $request = new AnnotateImageRequest();
+                $request->setImage($image);
+                $request->setFeature("DOCUMENT_TEXT_DETECTION");
+                $gcvRequest = new GoogleCloudVision([$request],  env('GOOGLE_CLOUD_KEY'));
+                $response = $gcvRequest->annotate();
+                $body .= $response->responses[0]->textAnnotations[0]->description;
+            }
+            $body = trim(preg_replace('/\s+/', ' ', $body));
+            $submission->body = $body;
+        }
+        $submission->auto_grade = $this->calc_sim($submission->body, $announcement->answer)*$announcement->max_grade;
         $submission->user_id = auth()->user()->id;
         $submission->save();
         return redirect('/announcements'.'/'.$announcement->id)->with('status', 'Submission done!');
@@ -113,6 +130,16 @@ class SubmissionsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function calc_sim($text1, $text2){
+        $uri ="https://twinword-text-similarity-v1.p.rapidapi.com/similarity/?text1=".urlencode($text1)."&text2=".urlencode($text2);
+        $response = \Unirest\Request::get("$uri",
+            array(
+                "X-RapidAPI-Key" => "0d4592612amsh2e69e9506883a6cp128a49jsn81286e4ac028"
+            )
+        );
+        return $response->body->similarity;
     }
 
     public function isValid($announcement)

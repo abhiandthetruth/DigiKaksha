@@ -47,6 +47,7 @@ class AnnouncementsController extends Controller
             $announcement->graded=1;
             $announcement->max_grade = $request->input('max_grade');
             $announcement->component = $request->input('component');
+            $announcement->answer = $request->input('answer');
         }
         else $announcement->graded=0;
         $announcement->user_id = auth()->user()->id;

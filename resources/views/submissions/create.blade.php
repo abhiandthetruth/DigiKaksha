@@ -13,7 +13,7 @@
                         {{ session('status') }}
                     </div>
                     @endif
-                    <form method="POST" action="/submissions">
+                    <form method="POST" action="/submissions" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
@@ -33,7 +33,7 @@
                             <label for="body" class="col-md-4 col-form-label text-md-right">{{ __('Body') }}</label>
 
                             <div class="col-md-8">
-                                <textarea id="body" style="height:200px" type="text" class="form-control @error('body') is-invalid @enderror" name="body" value="{{ old('body') }}" required autocomplete="body"></textarea>
+                                <textarea id="body" style="height:200px" type="text" class="form-control @error('body') is-invalid @enderror" name="body" value="{{ old('body') }}" autocomplete="body"></textarea>
 
                                 @error('body')
                                     <span class="invalid-feedback" role="alert">
@@ -41,6 +41,10 @@
                                     </span>
                                 @enderror
                             </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="photos[]" class="col-md-4 col-form-label text-md-right">Photos(This will override body if given)</label>
+                            <input type="file" class="form-control col-md-4 col-form-label text-md-right" name="photos[]" multiple />
                         </div>
                         <input type="hidden" name="announcement" value="{{ $announcement->id }}">
                         

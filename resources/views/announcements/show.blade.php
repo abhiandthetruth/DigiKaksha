@@ -31,9 +31,16 @@
                                         <p><strong>Submission:</strong> <small>{{$submission->body}}</small></p>
                                         <p class="strong"><strong>Grade:</strong> 
                                             @if($submission->grade)
-                                                {{$submission->grade}}
+                                                {{$submission->grade}} out of {{$announcement->max_grade}}
                                             @else
                                                 <small> No grade awarded yet</small>
+                                            @endif
+                                        </p>
+                                        <p class="strong"><strong>Auto Grade:</strong> 
+                                            @if($submission->auto_grade)
+                                                {{$submission->auto_grade}} out of {{$announcement->max_grade}}
+                                            @else
+                                                <small> Some problem in auto grading</small>
                                             @endif
                                         </p>
                                         <p class="strong"><strong>Comments:</strong> 
